@@ -1231,3 +1231,228 @@ body[data-theme="obsidian"] .nav-item-btn-custom {
     gap: 1.25rem;
   }
 }
+
+/* ============================================
+   PERFORMANCE: GPU acceleration hints
+   ============================================ */
+.blob, .blob-1, .blob-2, .blob-3 {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.floating-nav {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* ============================================
+   MOBILE: Full Responsive Overhaul (≤768px)
+   ============================================ */
+@media (max-width: 768px) {
+
+  /* Reduce heavy blur on mobile - biggest perf gain */
+  .blob {
+    filter: blur(80px) !important;
+    opacity: 0.08 !important;
+  }
+
+  /* Header section */
+  .header-card {
+    padding: 1.5rem 1rem !important;
+    gap: 1.5rem !important;
+    border-radius: 16px !important;
+  }
+
+  .header-avatar {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  .header-name {
+    font-size: 1.5rem !important;
+  }
+
+  .header-tagline {
+    font-size: 0.9rem !important;
+  }
+
+  /* Hacker Terminal on mobile */
+  .terminal-window {
+    border-radius: 12px !important;
+    min-height: 340px !important;
+    max-height: 70vh !important;
+  }
+
+  .terminal-output {
+    font-size: 0.75rem !important;
+    padding: 10px !important;
+    max-height: 55vh !important;
+  }
+
+  .terminal-input-row {
+    padding: 8px 10px !important;
+    gap: 6px !important;
+  }
+
+  .terminal-input {
+    font-size: 0.78rem !important;
+  }
+
+  .terminal-prompt {
+    font-size: 0.75rem !important;
+  }
+
+  /* Daily motivation ticker */
+  .daily-motivation-line {
+    font-size: 0.78rem !important;
+    padding: 6px 14px !important;
+    border-radius: 20px !important;
+  }
+
+  /* Stats / info cards */
+  .stat-card, .info-card, .glass-card {
+    padding: 1rem !important;
+    border-radius: 14px !important;
+  }
+
+  /* App grid 1 column on mobile */
+  #apps-container {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Social dock smaller */
+  .social-dock {
+    padding: 6px 12px !important;
+    gap: 8px !important;
+  }
+
+  .social-button {
+    width: 30px !important;
+    height: 30px !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* Section headings */
+  .section-title {
+    font-size: 1.2rem !important;
+  }
+
+  /* Floating nav - bigger tap targets */
+  .floating-nav {
+    bottom: 12px !important;
+    padding: 8px 10px !important;
+    gap: 4px !important;
+    width: 94% !important;
+  }
+
+  .floating-nav-item {
+    padding: 8px 10px !important;
+    border-radius: 10px !important;
+    font-size: 0.75rem !important;
+  }
+
+  /* Grids collapse to single column */
+  .homepage-grid,
+  .portfolio-grid,
+  .hub-layout,
+  .macro-device-grid,
+  .command-center-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  /* Main container padding */
+  .container {
+    padding: 1rem 0.85rem 7rem 0.85rem !important;
+  }
+
+  /* Portfolio cards */
+  .project-card, .portfolio-card {
+    border-radius: 14px !important;
+  }
+
+  /* Rakshit letter modal */
+  .rakshit-modal-content {
+    width: 95vw !important;
+    padding: 1.5rem !important;
+    border-radius: 18px !important;
+    max-height: 90vh !important;
+  }
+
+  .rakshit-letter-body {
+    font-size: 0.95rem !important;
+    max-height: 55vh !important;
+  }
+
+  /* Skills section */
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+  }
+}
+
+/* ============================================
+   MOBILE: Small phones (≤480px)
+   ============================================ */
+@media (max-width: 480px) {
+
+  /* Completely disable background blobs on very small screens */
+  .blob {
+    display: none !important;
+  }
+
+  .header-name {
+    font-size: 1.3rem !important;
+  }
+
+  .header-tagline {
+    font-size: 0.82rem !important;
+  }
+
+  /* Terminal even more compact */
+  .terminal-output {
+    font-size: 0.7rem !important;
+    max-height: 50vh !important;
+  }
+
+  /* Skills to 1 column */
+  .skills-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Floating nav labels hidden */
+  .floating-nav-item span {
+    display: none !important;
+  }
+
+  /* Social buttons minimal */
+  .social-dock {
+    gap: 6px !important;
+  }
+
+  .social-button {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 0.82rem !important;
+  }
+
+  /* Motivation ticker single line */
+  .daily-motivation-line {
+    font-size: 0.72rem !important;
+    padding: 5px 10px !important;
+  }
+}
+
+/* ============================================
+   PERF: Reduce animations on battery saver /
+   reduced-motion preference
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .blob,
+  .floating-nav,
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
