@@ -727,6 +727,7 @@ button, a, input {
   width: var(--atom-size);
   height: var(--atom-size);
   animation: 8s atom infinite cubic-bezier(1, .25, 0, .75);
+  will-change: transform;
 }
 @keyframes atom {
   0% {    transform: rotate(0deg) scale(1); }
@@ -766,17 +767,16 @@ button, a, input {
 
 /* Electron Orbit */
 .atom > [class^="electron"] {
-  border-top: solid rgba(var(--atom-color-rgb), .5) 1px;
-  border-right: solid rgba(var(--atom-color-rgb), .35) 2px;
-  border-bottom: solid rgba(var(--atom-color-rgb), .2) 4px;
-  border-left: solid rgba(var(--atom-color-rgb), 0) 2px;
+  border: solid rgba(var(--atom-color-rgb), .4) 2px;
   border-radius: 100%;
   width: 100%;
   height: var(--electron-orbit-size);
   position: absolute;
   top: 50%;
   margin-top: calc(var(--electron-orbit-size) / -2);
+  /* Use transform+opacity only — no border-color animation = no repaint */
   animation: var(--electron-speed) electron-orbit infinite linear;
+  will-change: transform;
 }
 .atom > .electron-alpha {
   transform: rotate(60deg);
@@ -787,39 +787,14 @@ button, a, input {
   animation: var(--electron-speed-omega) electron-orbit infinite linear;
 }
 @keyframes electron-orbit {
-  0% {
-      border-top: solid rgba(var(--atom-color-rgb), .5) 1px;
-      border-right: solid rgba(var(--atom-color-rgb), .35) 2px;
-      border-bottom: solid rgba(var(--atom-color-rgb), .2) 4px;
-      border-left: solid rgba(var(--atom-color-rgb), 0) 2px;
-  }
-  25% {
-      border-top: solid rgba(var(--atom-color-rgb), .35) 1px;
-      border-right: solid rgba(var(--atom-color-rgb), .2) 2px;
-      border-bottom: solid rgba(var(--atom-color-rgb), 0) 4px;
-      border-left: solid rgba(var(--atom-color-rgb), .5) 2px;
-  }
-  50% {
-      border-top: solid rgba(var(--atom-color-rgb), .2) 1px;
-      border-right: solid rgba(var(--atom-color-rgb), 0) 2px;
-      border-bottom: solid rgba(var(--atom-color-rgb), .5) 4px;
-      border-left: solid rgba(var(--atom-color-rgb), .35) 2px;
-  }
-  75% {
-      border-top: solid rgba(var(--atom-color-rgb), 0) 1px;
-      border-right: solid rgba(var(--atom-color-rgb), .5) 2px;
-      border-bottom: solid rgba(var(--atom-color-rgb), .35) 4px;
-      border-left: solid rgba(var(--atom-color-rgb), .2) 2px;
-  }
-  100% {
-      border-top: solid rgba(var(--atom-color-rgb), .5) 1px;
-      border-right: solid rgba(var(--atom-color-rgb), .35) 2px;
-      border-bottom: solid rgba(var(--atom-color-rgb), .2) 4px;
-      border-left: solid rgba(var(--atom-color-rgb), 0) 2px;
-  }
+  0%   { transform: rotate(0deg);   opacity: 1; }
+  25%  { transform: rotate(90deg);  opacity: 0.6; }
+  50%  { transform: rotate(180deg); opacity: 1; }
+  75%  { transform: rotate(270deg); opacity: 0.6; }
+  100% { transform: rotate(360deg); opacity: 1; }
 }
 
-/* Electron Unit */
+/* Electron Unit - use transform only, never left/top */
 .atom [class^="electron"]::after {
   content: '';
   display: block;
@@ -827,52 +802,22 @@ button, a, input {
   height: var(--electron-size);
   background: var(--electron-color-hex);
   border-radius: 50%;
-  margin-top: calc(var(--electron-size) / -2);
   position: absolute;
   top: 50%;
-  left: calc(var(--electron-size) / -1);
-  transform: scale(1);
+  left: 0;
+  /* translate instead of left/top — stays on GPU compositor layer */
+  transform: translateX(calc(var(--electron-size) / -1)) translateY(-50%) scale(1);
+  will-change: transform, opacity;
   animation: calc(var(--electron-speed) * 2) electron infinite ease-in-out;
 }
 .atom .electron-alpha::after { animation: calc(var(--electron-speed-alpha) * 2) electron infinite ease-in-out; }
 .atom .electron-omega::after { animation: calc(var(--electron-speed-omega) * 2) electron infinite ease-in-out; }
 @keyframes electron {
-  0% {
-      left: calc(var(--electron-size) / -1);
-      transform: scale(1);
-  }
-  12.5% {
-      top: 100%;
-      transform: scale(1.5);
-  }
-  25% {
-      left: 100%;
-      transform: scale(1);
-  }
-  37.5% {
-      top: 0%;
-      transform: scale(.25);
-  }
-  50% {
-      left: calc(var(--electron-size) / -1);
-      transform: scale(1);
-  }
-  62.5% {
-      top: 100%;
-      transform: scale(1.5);
-  }
-  75% {
-      left: 100%;
-      transform: scale(1);
-  }
-  87.5% {
-      top: 0%;
-      transform: scale(.25);
-  }
-  100% {
-      left: calc(var(--electron-size) / -1);
-      transform: scale(1);
-  }
+  0%    { transform: translateX(calc(var(--electron-size) / -1)) translateY(-50%) scale(1);    opacity: 1; }
+  25%   { transform: translateX(0) translateY(calc(var(--electron-orbit-size) / 2 - 50%)) scale(1.5);  opacity: 0.8; }
+  50%   { transform: translateX(calc(var(--electron-size) + 100%)) translateY(-50%) scale(1);   opacity: 1; }
+  75%   { transform: translateX(0) translateY(calc(-1 * var(--electron-orbit-size) / 2 - 50%)) scale(0.4); opacity: 0.6; }
+  100%  { transform: translateX(calc(var(--electron-size) / -1)) translateY(-50%) scale(1);    opacity: 1; }
 }
 
 /* Shadow */
@@ -1748,7 +1693,56 @@ text-align: center;
 }
 
 
+/* =====================================================
+   PERFORMANCE LAYER: GPU Containment + Compositor Hints
+   These rules isolate heavy sections so browser only
+   repaints what actually changed, not the whole page.
+   ===================================================== */
 
+/* Isolate the atom widget on its own compositor layer */
+.atom,
+.atom > [class^="electron"],
+.atom [class^="electron"]::after,
+.atom::before {
+  isolation: isolate;
+}
 
+/* Profile ring — own layer so it doesn't repaint the header */
+.profile-ring,
+.profile-pulse {
+  will-change: transform;
+  transform: translateZ(0);
+  isolation: isolate;
+}
+
+/* Floating nav — own layer so content scroll doesn't repaint it */
+.floating-nav {
+  contain: layout style;
+  will-change: transform;
+}
+
+/* Reduce blur on all remaining heavy elements in Style.css */
+#new-note-popover {
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+}
+
+.skills-card,
+.glass-card,
+.terminal-window {
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+}
+
+/* Smooth scrolling for the whole page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Ensure images don't cause layout shift */
+img {
+  max-width: 100%;
+  height: auto;
+}
 
 
