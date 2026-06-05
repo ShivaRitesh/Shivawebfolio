@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ritesh - Portfolio & Info</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Original Styles (for variable definitions and core themes) -->
+  <link rel="stylesheet" href="./Style.css">
+  <!-- Hub Styles -->
+  <link rel="stylesheet" href="./Style-hub.css">
+</head>
+<body data-theme="midnight">
+  
+  <!-- Background Animated Blobs -->
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <div class="container">
+    
+    <!-- Header/Title -->
+    <header class="hub-header" style="margin-top: 1rem;">
+      <h1>My Info & Portfolio</h1>
+      <p>Building local agents, automating daily life, and bridging tech for everyone</p>
+    </header>
+
+    <!-- Main Grid -->
+    <div class="portfolio-grid">
+      
+      <!-- Left Profile Column -->
+      <aside class="glass-card profile-card">
+        <div class="profile-avatar-wrapper">
+          <!-- Profile image -->
+          <img src="https://iili.io/HWhMFrQ.jpg" alt="Ritesh" />
+        </div>
+        
+        <div>
+          <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.25rem;">Ritesh Pandey</h2>
+          <p style="color: rgba(255, 255, 255, 0.5); font-size: 0.9rem;">Automation Engineer & Prompt Developer</p>
+        </div>
+
+        <div class="profile-badge">
+          <span></span> Available for Consulting
+        </div>
+
+        <!-- Social Dock -->
+        <div class="social-dock" style="width: 100%; justify-content: space-around; padding: 8px 6px;">
+          <a href="https://www.instagram.com/" class="social-button social-button--instagram" aria-label="Instagram" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.youtube.com/" class="social-button social-button--youtube" aria-label="YouTube" target="_blank">
+            <i class="fab fa-youtube"></i>
+          </a>
+          <a href="https://github.com/Rambo0074" class="social-button social-button--github" aria-label="GitHub" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://linkedin.com" class="social-button social-button--linkedin" aria-label="LinkedIn" target="_blank">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </aside>
+
+      <!-- Right Content Tabs Column -->
+      <main class="portfolio-tab-content">
+        <!-- Tabs Navigation -->
+        <nav class="portfolio-nav-tabs">
+          <button class="portfolio-tab-btn active" data-target="about-view">About</button>
+          <button class="portfolio-tab-btn" data-target="skills-view">Skills</button>
+          <button class="portfolio-tab-btn" data-target="projects-view">Projects</button>
+          <button class="portfolio-tab-btn" data-target="contact-view">Contact</button>
+        </nav>
+
+        <!-- About View -->
+        <section id="about-view" class="portfolio-view glass-card active">
+          <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--theme-accent); margin-bottom: 0.75rem;">About Me</h3>
+          <p style="line-height: 1.6; color: rgba(255,255,255,0.85); margin-bottom: 1rem;">
+            Hello! I am Ritesh, a developer passionate about workflow automation, Artificial Intelligence, and local automation environments. I specialize in building agents, writing advanced prompt structures, and creating PC/mobile automation macros that make daily life simpler.
+          </p>
+          <p style="line-height: 1.6; color: rgba(255,255,255,0.85); margin-bottom: 1rem;">
+            Whether it's scripting daily database cleanups, automating email tasks, building custom bots, or writing Tasker flows that control mobile states, I focus on building tools that provide concrete value. I run this community to help both coders and non-coders realize the power of automation and AI.
+          </p>
+          <p style="line-height: 1.6; color: rgba(255,255,255,0.85);">
+            Explore the **AI & Automation Hub** to learn more, or drop a line in the Contact tab to collaborate on building something custom!
+          </p>
+        </section>
+
+        <!-- Skills View -->
+        <section id="skills-view" class="portfolio-view glass-card">
+          <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--theme-accent); margin-bottom: 1rem;">Skills & Tech Stack</h3>
+          <div class="skills-grid">
+            <div class="glass-card skill-card">
+              <i class="fa-solid fa-mobile-screen-button"></i>
+              <span style="font-size: 0.85rem; font-weight: 500;">Tasker / Mobile</span>
+            </div>
+            <div class="glass-card skill-card">
+              <i class="fa-solid fa-keyboard"></i>
+              <span style="font-size: 0.85rem; font-weight: 500;">PC Macros / AHK</span>
+            </div>
+            <div class="glass-card skill-card">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              <span style="font-size: 0.85rem; font-weight: 500;">AI Prompting</span>
+            </div>
+            <div class="glass-card skill-card">
+              <i class="fa-brands fa-python"></i>
+              <span style="font-size: 0.85rem; font-weight: 500;">Python Scripting</span>
+            </div>
+            <div class="glass-card skill-card">
+              <i class="fa-brands fa-js"></i>
+              <span style="font-size: 0.85rem; font-weight: 500;">JavaScript</span>
+            </div>
+            <div class="glass-card skill-card">
+              <i class="fa-solid fa-network-wired"></i>
+              <span style="font-size: 0.85rem; font-weight: 500;">MCP Integration</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Projects View -->
+        <section id="projects-view" class="portfolio-view">
+          <div class="projects-grid">
+            
+            <!-- Project 1 -->
+            <article class="glass-card project-card">
+              <div>
+                <div class="project-card-header">
+                  <i class="fa-solid fa-robot project-icon"></i>
+                  <div class="project-links">
+                    <a href="#" class="project-link" title="Code"><i class="fa-brands fa-github"></i></a>
+                  </div>
+                </div>
+                <h4 style="font-weight: 700; margin-bottom: 0.5rem; font-size: 1.05rem;">NEW JARVIS</h4>
+                <p class="project-desc">A localized, local agent server and daily task automation framework that schedules workflows and acts as a digital assistant.</p>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">Node.js</span>
+                <span class="project-tag">AI Agents</span>
+                <span class="project-tag">MCP</span>
+              </div>
+            </article>
+
+            <!-- Project 2 -->
+            <article class="glass-card project-card">
+              <div>
+                <div class="project-card-header">
+                  <i class="fa-solid fa-bolt project-icon"></i>
+                  <div class="project-links">
+                    <a href="#" class="project-link" title="Code"><i class="fa-brands fa-github"></i></a>
+                  </div>
+                </div>
+                <h4 style="font-weight: 700; margin-bottom: 0.5rem; font-size: 1.05rem;">Superhuman Daily</h4>
+                <p class="project-desc">An executive planner dashboard that manages daily routines, integrates audio sound healing, and updates task databases.</p>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">React</span>
+                <span class="project-tag">TypeScript</span>
+                <span class="project-tag">Vite</span>
+              </div>
+            </article>
+
+            <!-- Project 3 -->
+            <article class="glass-card project-card">
+              <div>
+                <div class="project-card-header">
+                  <i class="fa-solid fa-folder-open project-icon"></i>
+                  <div class="project-links">
+                    <a href="#" class="project-link" title="Code"><i class="fa-brands fa-github"></i></a>
+                  </div>
+                </div>
+                <h4 style="font-weight: 700; margin-bottom: 0.5rem; font-size: 1.05rem;">MCP File Server</h4>
+                <p class="project-desc">A Node.js implementation of the Model Context Protocol that safely exposes directory tools to local LLMs.</p>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">Node.js</span>
+                <span class="project-tag">MCP</span>
+                <span class="project-tag">File System</span>
+              </div>
+            </article>
+
+            <!-- Project 4 -->
+            <article class="glass-card project-card">
+              <div>
+                <div class="project-card-header">
+                  <i class="fa-solid fa-brain project-icon"></i>
+                  <div class="project-links">
+                    <a href="#" class="project-link" title="Code"><i class="fa-brands fa-github"></i></a>
+                  </div>
+                </div>
+                <h4 style="font-weight: 700; margin-bottom: 0.5rem; font-size: 1.05rem;">Ollama Orchestrator</h4>
+                <p class="project-desc">A Python console daemon that manages prompt queues, stores inference histories, and configures local DeepSeek R1 models.</p>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">Python</span>
+                <span class="project-tag">Ollama</span>
+                <span class="project-tag">DeepSeek</span>
+              </div>
+            </article>
+
+            <!-- Project 5 -->
+            <article class="glass-card project-card">
+              <div>
+                <div class="project-card-header">
+                  <i class="fa-solid fa-house-laptop project-icon"></i>
+                  <div class="project-links">
+                    <a href="#" class="project-link" title="Code"><i class="fa-brands fa-github"></i></a>
+                  </div>
+                </div>
+                <h4 style="font-weight: 700; margin-bottom: 0.5rem; font-size: 1.05rem;">Tasker Auto-Home</h4>
+                <p class="project-desc">An Android smart automation linking GPS geofencing, Wi-Fi SSID connections, and local Home Assistant REST APIs.</p>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">Tasker XML</span>
+                <span class="project-tag">Home Assistant</span>
+                <span class="project-tag">Android</span>
+              </div>
+            </article>
+
+            <!-- Project 6 -->
+            <article class="glass-card project-card">
+              <div>
+                <div class="project-card-header">
+                  <i class="fa-solid fa-globe project-icon"></i>
+                  <div class="project-links">
+                    <a href="#" class="project-link" title="Visit"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                  </div>
+                </div>
+                <h4 style="font-weight: 700; margin-bottom: 0.5rem; font-size: 1.05rem;">Ritesh Hub Website</h4>
+                <p class="project-desc">The present multi-theme interactive dashboard and portfolio connecting model telemetry with daily workflows.</p>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">HTML5</span>
+                <span class="project-tag">CSS3</span>
+                <span class="project-tag">Vanilla JS</span>
+              </div>
+            </article>
+
+          </div>
+        </section>
+
+        <!-- Contact View -->
+        <section id="contact-view" class="portfolio-view glass-card">
+          <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--theme-accent); margin-bottom: 1rem;">Get in Touch</h3>
+          <form id="portfolio-contact-form" onsubmit="event.preventDefault(); alert('Message sent successfully!'); this.reset();">
+            <div class="form-group">
+              <label for="contact-name">Name</label>
+              <input type="text" id="contact-name" class="form-control" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+              <label for="contact-email">Email Address</label>
+              <input type="email" id="contact-email" class="form-control" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" class="form-control" placeholder="Tell me what you'd like to automate..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="margin-top: 0.5rem;">Send Message</button>
+          </form>
+        </section>
+      </main>
+
+    </div>
+  </div>
+
+  <!-- Portfolio Tab Controller Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabBtns = document.querySelectorAll('.portfolio-tab-btn');
+      const views = document.querySelectorAll('.portfolio-view');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const target = btn.getAttribute('data-target');
+          
+          tabBtns.forEach(b => b.classList.remove('active'));
+          views.forEach(v => v.classList.remove('active'));
+
+          btn.classList.add('active');
+          document.getElementById(target).classList.add('active');
+        });
+      });
+    });
+  </script>
+
+  <!-- Global Script -->
+  <script src="./Script-hub.js"></script>
+</body>
+</html>

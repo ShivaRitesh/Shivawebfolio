@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coding is Love - Classic Homepage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Original Stylesheet -->
+  <link rel="stylesheet" href="./Style.css">
+  <!-- Global Hub Styles -->
+  <link rel="stylesheet" href="./Style-hub.css">
+</head>
+<body data-theme="obsidian">
+
+  <!-- Background Animated Blobs -->
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <div id="main-wrapper" class="fancy-scrollbar">
+    <!-- SVG overlay for interactive curve arrow -->
+    <svg id="arrow-overlay-svg" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 999;">
+      <defs>
+        <!-- Glowing drop shadows for neon look -->
+        <filter id="neon-glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="3" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+        <!-- Arrowhead Marker -->
+        <marker id="neon-arrowhead" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--theme-accent)" />
+        </marker>
+      </defs>
+      <!-- The curving path to profile photo -->
+      <path id="curve-path" d="" fill="none" stroke="var(--theme-accent)" stroke-width="2.5" stroke-dasharray="8 4" marker-end="url(#neon-arrowhead)" filter="url(#neon-glow)" style="opacity: 0; transition: opacity 0.3s ease;" />
+    </svg>
+
+    <div id="main">
+      <!-- Centered Container for Clean Typography and Spacing -->
+      <div class="container" style="max-width: 850px; padding-top: 1.5rem;">
+        
+        <!-- Navigation Capsule -->
+        <div id="links-container" style="margin-bottom: 0.5rem;">
+          <nav class="nav-capsule">
+            <a href="./index.html" class="nav-item" style="border: 1px solid var(--theme-accent); background: rgba(223, 194, 96, 0.1);">
+              <i class="fa-solid fa-gauge-high nav-icon" style="color: var(--theme-accent);"></i>
+              <span class="nav-label" style="color: var(--theme-accent); font-weight: 700;">Command Center</span>
+            </a>
+            <a href="https://gmail.com" class="nav-item">
+              <i class="fa-solid fa-envelope nav-icon"></i>
+              <span class="nav-label">Gmail</span>
+            </a>
+            <a href="https://unsplash.com" class="nav-item">
+              <i class="fa-solid fa-camera nav-icon"></i>
+              <span class="nav-label">Unsplash</span>
+            </a>
+            <a href="./automation-hub.html" class="nav-item">
+              <i class="fa-solid fa-globe nav-icon"></i>
+              <span class="nav-label">My Hub</span>
+            </a>
+            <a href="https://docs.google.com/spreadsheets/u/0/?tgif=c" class="nav-item">
+              <i class="fa-solid fa-file-excel nav-icon"></i>
+              <span class="nav-label">Google Sheet</span>
+            </a>
+            <a href="./portfolio.html" class="nav-item" id="about-nav-item">
+              <i class="fa-solid fa-circle-info nav-icon"></i>
+              <span class="nav-label">About</span>
+            </a>
+          </nav>
+        </div>
+
+        <!-- Header Card (Atom Animation + Title/AI Dock + Profile Picture) -->
+        <div class="header-card" style="margin-top: 1.5rem;">
+          <!-- Left Panel: Atom Animation -->
+          <div class="header-left-panel">
+            <div class="atom">
+              <div class="electron"></div>
+              <div class="electron-alpha"></div>
+              <div class="electron-omega"></div>
+            </div>
+          </div>
+
+          <!-- Center Panel: Title + AI Dock (Replacing old socials) -->
+          <div class="header-center-panel">
+            <a href="https://im007.w3spaces.com/" target="_blank" style="text-decoration: none;">
+              <h3 class="txt-ne" data-text="rambo007">Coding is Love ❤️</h3>
+            </a>
+            
+            <div class="social-dock">
+              <!-- Gemini -->
+              <a href="https://gemini.google.com/" target="_blank" class="social-button social-button--gemini" title="Gemini">
+                <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: url(#gemini-grad-dock); flex-shrink: 0;" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="gemini-grad-dock" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#4285f4" />
+                      <stop offset="50%" stop-color="#9b51e0" />
+                      <stop offset="100%" stop-color="#e52592" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z"></path>
+                </svg>
+              </a>
+
+              <!-- Claude -->
+              <a href="https://claude.ai/" target="_blank" class="social-button social-button--claude" title="Claude">
+                <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: #d97706; flex-shrink: 0;" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.709 15.955l4.72-2.647.08-.23-.08-.128H9.2l-.79-.048-2.698-.073-2.339-.097-2.266-.122-.571-.121L0 11.784l.055-.352.48-.321.686.06 1.52.103 2.278.158 1.652.097 2.449.255h.389l.055-.157-.134-.098-.103-.097-2.358-1.596-2.552-1.688-1.336-.972-.724-.491-.364-.462-.158-1.008.656-.722.881.06.225.061.893.686 1.908 1.476 2.491 1.833.365.304.145-.103.019-.073-.164-.274-1.355-2.446-1.446-2.49-.644-1.032-.17-.619a2.97 2.97 0 01-.104-.729L6.283.134 6.696 0l.996.134.42.364.62 1.414 1.002 2.229 1.555 3.03.456.898.243.832.091.255h.158V9.01l.128-1.706.237-2.095.23-2.695.08-.76.376-.91.747-.492.584.28.48.685-.067.444-.286 1.851-.559 2.903-.364 1.942h.212l.243-.242.985-1.306 1.652-2.064.73-.82.85-.904.547-.431h1.033l.76 1.129-.34 1.166-1.064 1.347-.881 1.142-1.264 1.7-.79 1.36.073.11.188-.02 2.856-.606 1.543-.28 1.841-.315.833.388.091.395-.328.807-1.969.486-2.309.462-3.439.813-.042.03.049.061 1.549.146.662.036h1.622l3.02.225.79.522.474.638-.079.485-1.215.62-1.64-.389-3.829-.91-1.312-.329h-.182v.11l1.093 1.068 2.006 1.81 2.509 2.33.127.578-.322.455-.34-.049-2.205-1.657-.851-.747-1.926-1.62h-.128v.17l.444.649 2.345 3.521.122 1.08-.17.353-.608.213-.668-.122-1.374-1.925-1.415-2.167-1.143-1.943-.14.08-.674 7.254-.316.37-.729.28-.607-.461-.322-.747.322-1.476.389-1.924.315-1.53.286-1.9.17-.632-.012-.042-.14.018-1.434 1.967-2.18 2.945-1.726 1.845-.414.164-.717-.37.067-.662.401-.589 2.388-3.036 1.44-1.882.93-1.086-.006-.158h-.055L4.132 18.56l-1.13.146-.487-.456.061-.746.231-.243 1.908-1.312-.006.006z"></path>
+                </svg>
+              </a>
+
+              <!-- ChatGPT -->
+              <a href="https://chatgpt.com/" target="_blank" class="social-button social-button--chatgpt" title="ChatGPT">
+                <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: #10a37f; flex-shrink: 0;" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9.205 8.658v-2.26c0-.19.072-.333.238-.428l4.543-2.616c.619-.357 1.356-.523 2.117-.523 2.854 0 4.662 2.212 4.662 4.566 0 .167 0 .357-.024.547l-4.71-2.759a.797.797 0 00-.856 0l-5.97 3.473zm10.609 8.8V12.06c0-.333-.143-.57-.429-.737l-5.97-3.473 1.95-1.118a.433.433 0 01.476 0l4.543 2.617c1.309.76 2.189 2.378 2.189 3.948 0 1.808-1.07 3.473-2.76 4.163zM7.802 12.703l-1.95-1.142c-.167-.095-.239-.238-.239-.428V5.899c0-2.545 1.95-4.472 4.591-4.472 1 0 1.927.333 2.712.928L8.23 5.067c-.285.166-.428.404-.428.737v6.898zM12 15.128l-2.795-1.57v-3.33L12 8.658l2.795 1.57v3.33L12 15.128zm1.796 7.23c-1 0-1.927-.332-2.712-.927l4.686-2.712c.285-.166.428-.404.428-.737v-6.898l1.974 1.142c.167.095.238.238.238.428v5.233c0 2.545-1.974 4.472-4.614 4.472zm-5.637-5.303l-4.544-2.617c-1.308-.761-2.188-2.378-2.188-3.948A4.482 4.482 0 014.21 6.327v5.423c0 .333.143.571.428.738l5.947 3.449-1.95 1.118a.432.432 0 01-.476 0zm-.262 3.9c-2.688 0-4.662-2.021-4.662-4.519 0-.19.024-.38.047-.57l4.686 2.71c.286.167.571.167.856 0l5.97-3.448v2.26c0 .19-.07.333-.237.428l-4.543 2.616c-.619.357-1.356.523-2.117.523zm5.899 2.83a5.947 5.947 0 005.827-4.756C22.287 18.339 24 15.84 24 13.296c0-1.665-.713-3.282-1.998-4.448.119-.5.19-.999.19-1.498 0-3.401-2.759-5.947-5.946-5.947-.642 0-1.26.095-1.88.31A5.962 5.962 0 0010.205 0a5.947 5.947 0 00-5.827 4.757C1.713 5.447 0 7.945 0 10.49c0 1.666.713 3.283 1.998 4.448-.119.5-.19 1-.19 1.499 0 3.401 2.759 5.946 5.946 5.946.642 0 1.26-.095 1.88-.309a5.96 5.96 0 004.162 1.713z"></path>
+                </svg>
+              </a>
+
+              <!-- NotebookLM -->
+              <a href="https://notebooklm.google/" target="_blank" class="social-button social-button--notebooklm" title="NotebookLM">
+                <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: #0f766e; flex-shrink: 0;" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11.999 3.14C5.372 3.14 0 8.588 0 15.312v5.828h2.212v-.58c0-2.728 2.178-4.938 4.866-4.938 2.688 0 4.866 2.21 4.866 4.937v.581h2.212v-.58c0-3.967-3.17-7.18-7.078-7.18a6.966 6.966 0 00-4.086 1.318C4.2 12.262 6.687 10.59 9.56 10.59c4.057 0 7.347 3.338 7.347 7.453v3.097h2.212v-3.097c0-5.355-4.28-9.698-9.56-9.698a9.438 9.438 0 00-6.217 2.332C4.984 7.528 8.244 5.383 12 5.383c5.406 0 9.788 4.446 9.788 9.93v5.827H24v-5.828C23.999 8.588 18.627 3.14 11.999 3.14z"></path>
+                </svg>
+              </a>
+
+              <!-- Google AI Studio -->
+              <a href="https://aistudio.google.com/" target="_blank" class="social-button social-button--aistudio" title="Google AI Studio">
+                <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: #8b5cf6; flex-shrink: 0;" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9.921 4.196H6.328A2.705 2.705 0 003.623 6.9v11.362a2.705 2.705 0 002.705 2.705h11.363a2.705 2.705 0 002.705-2.705v-4.756l1.623-1.113v5.87a4.329 4.329 0 01-4.328 4.328H6.328A4.329 4.329 0 012 18.263V6.901a4.328 4.329 0 014.328-4.329h4.545l-.952 1.624z"></path>
+                  <path d="M17.82 0c.145 0 .268.104.299.246a7 7 0 001.9 3.484 7 7 0 003.485 1.901c.142.031.246.154.246.3a.308.308 0 01-.246.298A7 7 0 0020.02 8.13a7 7 0 00-1.912 3.535.297.297 0 01-.288.238.297.297 0 01-.288-.238A7 7 0 0015.62 8.13a7 7 0 00-3.535-1.912.297.297 0 01-.238-.288c0-.14.1-.26.238-.288A7 7 0 0015.62 3.73 7.001 7.001 0 0017.521.246.308.308 0 0117.82 0z"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Panel: Profile Picture -->
+          <div class="header-right-panel">
+            <div class="profile-container">
+              <div class="profile-glow"></div>
+              <div class="profile-ring"></div>
+              <button id="user-menu-button">
+                <img src="https://iili.io/HWhMFrQ.jpg" alt="Ritesh" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Google Search Container -->
+        <div id="search-container" style="margin-top: 5%; margin-bottom: 2.5rem;">
+          <div id="search-input-container">
+            <img src="https://assets.codepen.io/1468070/Google+G+Icon.png" alt="Google" />
+            <input type="text" placeholder="Search Google with AI..." id="search" autocomplete="off" />
+          </div>
+
+          <a href="https://gemini.google.com/" target="_blank" class="search-addon-btn" id="gemini-btn" title="Open Gemini AI">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 3c.13 0 .26.05.35.15.1.09.15.22.15.35v1.2c0 3.75 3.05 6.8 6.8 6.8h1.2c.28 0 .5.22.5.5s-.22.5-.5.5h-1.2c-3.75 0-6.8 3.05-6.8 6.8v1.2c0 .28-.22.5-.5.5s-.5-.22-.5-.5v-1.2c0-3.75-3.05-6.8-6.8-6.8H3.5c-.28 0-.5-.22-.5-.5s.22-.5.5-.5h1.2c3.75 0 6.8-3.05 6.8-6.8V3.5c0-.28.22-.5.5-.5z" />
+            </svg>
+          </a>
+
+          <a href="https://notebooklm.google/" target="_blank" class="search-addon-btn" id="notebooklm-btn" title="Open NotebookLM">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5V15a2 2 0 0 1 2-2h14" />
+              <path d="M20 4v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z" />
+              <line x1="8" y1="6" x2="16" y2="6" />
+              <line x1="8" y1="10" x2="16" y2="10" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- 8-Card Apps Grid -->
+        <div id="apps-container" style="margin-top: 3rem; margin-bottom: 3rem;">
+          <!-- Row 1 -->
+          <a href="https://stackoverflow.com" target="_blank" class="app-card app-card--stackoverflow">
+            <i class="fa-brands fa-stack-overflow"></i>
+            <div class="label">
+              <span class="name">Stack Overflow</span>
+            </div>
+          </a>
+
+          <a href="https://chatgpt.com" target="_blank" class="app-card app-card--chatgpt">
+            <svg width="26" height="26" viewBox="0 0 41 41" fill="#10A37F" xmlns="http://www.w3.org/2000/svg" stroke-width="1.5" class="h-6 w-6"><path d="M37.5324 16.8707C37.9808 15.5241 38.1363 14.0974 37.9886 12.6859C37.8409 11.2744 37.3934 9.91076 36.676 8.68622C35.6126 6.83404 33.9882 5.3676 32.0373 4.4985C30.0864 3.62941 27.9098 3.40259 25.8215 3.85078C24.8796 2.7893 23.7219 1.94125 22.4257 1.36341C21.1295 0.785575 19.7249 0.491269 18.3058 0.500197C16.1708 0.495044 14.0893 1.16803 12.3614 2.42214C10.6335 3.67624 9.34853 5.44666 8.6917 7.47815C7.30085 7.76286 5.98686 8.3414 4.8377 9.17505C3.68854 10.0087 2.73073 11.0782 2.02839 12.312C0.956464 14.1591 0.498905 16.2988 0.721698 18.4228C0.944492 20.5467 1.83612 22.5449 3.268 24.1293C2.81966 25.4759 2.66413 26.9026 2.81182 28.3141C2.95951 29.7256 3.40701 31.0892 4.12437 32.3138C5.18791 34.1659 6.8123 35.6322 8.76321 36.5013C10.7141 37.3704 12.8907 37.5973 14.9789 37.1492C15.9208 38.2107 17.0786 39.0587 18.3747 39.6366C19.6709 40.2144 21.0755 40.5087 22.4946 40.4998C24.6307 40.5054 26.7133 39.8321 28.4418 38.5772C30.1704 37.3223 31.4556 35.5506 32.1119 33.5179C33.5027 33.2332 34.8167 32.6547 35.9659 31.821C37.115 30.9874 38.0728 29.9178 38.7752 28.684C39.8458 26.8371 40.3023 24.6979 40.0789 22.5748C39.8556 20.4517 38.9639 18.4544 37.5324 16.8707ZM22.4978 37.8849C20.7443 37.8874 19.0459 37.2733 17.6994 36.1501C17.7601 36.117 17.8666 36.0586 17.936 36.0161L25.9004 31.4156C26.1003 31.3019 26.2663 31.137 26.3813 30.9378C26.4964 30.7386 26.5563 30.5124 26.5549 30.2825V19.0542L29.9213 20.998C29.9389 21.0068 29.9541 21.0198 29.9656 21.0359C29.977 21.052 29.9842 21.0707 29.9867 21.0902V30.3889C29.9842 32.375 29.1946 34.2791 27.7909 35.6841C26.3872 37.0892 24.4838 37.8806 22.4978 37.8849ZM6.39227 31.0064C5.51397 29.4888 5.19742 27.7107 5.49804 25.9832C5.55718 26.0187 5.66048 26.0818 5.73461 26.1244L13.699 30.7248C13.8975 30.8408 14.1233 30.902 14.3532 30.902C14.583 30.902 14.8088 30.8408 15.0073 30.7248L24.731 25.1103V28.9979C24.7321 29.0177 24.7283 29.0376 24.7199 29.0556C24.7115 29.0736 24.6988 29.0893 24.6829 29.1012L16.6317 33.7497C14.9096 34.7416 12.8643 35.0097 10.9447 34.4954C9.02506 33.9811 7.38785 32.7263 6.39227 31.0064ZM4.29707 13.6194C5.17156 12.0998 6.55279 10.9364 8.19885 10.3327C8.19885 10.4013 8.19491 10.5228 8.19491 10.6071V19.808C8.19351 20.0378 8.25334 20.2638 8.36823 20.4629C8.48312 20.6619 8.64893 20.8267 8.84863 20.9404L18.5723 26.5542L15.206 28.4979C15.1894 28.5089 15.1703 28.5155 15.1505 28.5173C15.1307 28.5191 15.1107 28.516 15.0924 28.5082L7.04046 23.8557C5.32135 22.8601 4.06716 21.2235 3.55289 19.3046C3.03862 17.3858 3.30624 15.3413 4.29707 13.6194ZM31.955 20.0556L22.2312 14.4411L25.5976 12.4981C25.6142 12.4872 25.6333 12.4805 25.6531 12.4787C25.6729 12.4769 25.6928 12.4801 25.7111 12.4879L33.7631 17.1364C34.9967 17.849 36.0017 18.8982 36.6606 20.1613C37.3194 21.4244 37.6047 22.849 37.4832 24.2684C37.3617 25.6878 36.8382 27.0432 35.9743 28.1759C35.1103 29.3086 33.9415 30.1717 32.6047 30.6641C32.6047 30.5947 32.6047 30.4733 32.6047 30.3889V21.188C32.6066 20.9586 32.5474 20.7328 32.4332 20.5338C32.319 20.3348 32.154 20.1698 31.955 20.0556ZM35.3055 15.0128C35.2464 14.9765 35.1431 14.9142 35.069 14.8717L27.1045 10.2712C26.906 10.1554 26.6803 10.0943 26.4504 10.0943C26.2206 10.0943 25.9948 10.1554 25.7963 10.2712L16.0726 15.8858V11.9982C16.0715 11.9783 16.0753 11.9585 16.0837 11.9405C16.0921 11.9225 16.1048 11.9068 16.1207 11.8949L24.1719 7.25025C25.4053 6.53903 26.8158 6.19376 28.2383 6.25482C29.6608 6.31589 31.0364 6.78077 32.2044 7.59508C33.3723 8.40939 34.2842 9.53945 34.8334 10.8531C35.3826 12.1667 35.5464 13.6095 35.3055 15.0128ZM14.2424 21.9419L10.8752 19.9981C10.8576 19.9893 10.8423 19.9763 10.8309 19.9602C10.8195 19.9441 10.8122 19.9254 10.8098 19.9058V10.6071C10.8107 9.18295 11.2173 7.78848 11.9819 6.58696C12.7466 5.38544 13.8377 4.42659 15.1275 3.82264C16.4173 3.21869 17.8524 2.99464 19.2649 3.1767C20.6775 3.35876 22.0089 3.93941 23.1034 4.85067C23.0427 4.88379 22.937 4.94215 22.8668 4.98473L14.9024 9.58517C14.7025 9.69878 14.5366 9.86356 14.4215 10.0626C14.3065 10.2616 14.2466 10.4877 14.2479 10.7175L14.2424 21.9419ZM16.071 17.9991L20.4018 15.4978L24.7325 17.9975V22.9985L20.4018 25.4983L16.071 22.9985V17.9991Z" fill="currentColor"></path></svg>
+            <div class="label">
+              <span class="name">Chat GPT</span>
+            </div>
+          </a>
+
+          <!-- Row 2 -->
+          <a href="https://codepen.io" target="_blank" class="app-card app-card--codepen">
+            <i class="fa-brands fa-codepen"></i>
+            <div class="label">
+              <span class="name">CodePen</span>
+            </div>
+          </a>
+
+          <a href="https://aistudio.google.com/" target="_blank" class="app-card app-card--aistudio">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L14.8 8.8L22 10L16.4 14.4L18.4 21.2L12 17.2L5.6 21.2L7.6 14.4L2 10L9.2 8.8L12 2z" fill="url(#ai-studio-gradient)" />
+              <defs>
+                <linearGradient id="ai-studio-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#4285F4" />
+                  <stop offset="50%" stop-color="#9b51e0" />
+                  <stop offset="100%" stop-color="#ea4335" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="label">
+              <span class="name">Google AI Studio</span>
+            </div>
+          </a>
+
+          <!-- Row 3 -->
+          <a href="https://spotify.com" target="_blank" class="app-card app-card--spotify">
+            <i class="fa-brands fa-spotify"></i>
+            <div class="label">
+              <span class="name">Spotify</span>
+            </div>
+          </a>
+         
+          <a href="https://github.com/Rambo0074" target="_blank" class="app-card app-card--github">
+            <i class="fa-brands fa-github"></i>
+            <div class="label">
+              <span class="name">Github</span>
+            </div>
+          </a>
+
+          <!-- Row 4 -->
+          <a href="https://netflix.com" target="_blank" class="app-card app-card--netflix">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="color: #E50914;">
+              <path d="M5.5 2h3.5v14.33L15 2h3.5v20H15V7.67L9 22H5.5V2z" />
+            </svg>
+            <div class="label">
+              <span class="name">Netflix</span>
+            </div>
+          </a>
+
+          <a href="https://mrdoob.com/projects/chromeexperiments/google-space/" target="_blank" class="app-card app-card--antigravity">
+            <i class="fa-brands fa-google"></i>
+            <div class="label">
+              <span class="name">Google Antigravity</span>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Float Menu Switcher (Slide-out menu on left edge) -->
+  <div id="theme-switcher-trigger"></div>
+  <div id="theme-switcher">
+    <button class="theme-btn" data-theme="midnight" title="Midnight Cyan" style="background: #00aad4;"></button>
+    <button class="theme-btn" data-theme="cyberpunk" title="Cyberpunk Pink" style="background: #ff0080;"></button>
+    <button class="theme-btn" data-theme="emerald" title="Neon Emerald" style="background: #00e676;"></button>
+    <button class="theme-btn" data-theme="sunset" title="Sunset Rose" style="background: #ff5722;"></button>
+    <button class="theme-btn" data-theme="space" title="Aura Blue" style="background: #00bfff;"></button>
+    <button class="theme-btn active" data-theme="obsidian" title="Obsidian Gold" style="background: #dfc260;"></button>
+  </div>
+
+  <!-- Sticky Notes Toggle Button -->
+  <button id="notes-toggle-btn" title="Add Sticky Note">
+    <i class="fa-regular fa-note-sticky"></i>
+  </button>
+
+  <!-- Floating New Note Creator Popover -->
+  <div id="new-note-popover">
+    <textarea id="popover-note-input" placeholder="Type a note..." rows="3"></textarea>
+    <div class="popover-actions">
+      <button id="popover-cancel-btn" class="popover-btn">Cancel</button>
+      <button id="popover-save-btn" class="popover-btn">Add Note</button>
+    </div>
+  </div>
+
+  <!-- Container for active Draggable Notes -->
+  <div id="draggable-notes-container"></div>
+
+  <!-- Scripts -->
+  <script>
+    // Theme Switcher Logic
+    const themeButtons = document.querySelectorAll('.theme-btn');
+    
+    function setTheme(themeName) {
+      document.body.setAttribute('data-theme', themeName);
+      localStorage.setItem('theme', themeName);
+      
+      themeButtons.forEach(btn => {
+        if (btn.getAttribute('data-theme') === themeName) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+
+    const savedTheme = localStorage.getItem('theme') || 'obsidian';
+    setTheme(savedTheme);
+
+    themeButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const theme = btn.getAttribute('data-theme');
+        setTheme(theme);
+      });
+    });
+
+    // Sync theme-button active status on load
+    const activeTheme = localStorage.getItem('theme') || 'obsidian';
+    themeButtons.forEach(btn => {
+      if (btn.getAttribute('data-theme') === activeTheme) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    // Google Search logic
+    function googleSearch() {
+      var text = document.getElementById("search").value;
+      if (text.trim() !== "") {
+        var url = 'https://www.google.com/search?q=' + encodeURIComponent(text);
+        window.location.href = url;
+      }
+    }
+    
+    document.getElementById("search").addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        googleSearch();
+      }
+    });
+
+    // Mouse move effect for header card glow
+    const card = document.querySelector('.header-card');
+    if (card) {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        card.style.setProperty('--mouse-x', `${x}%`);
+        card.style.setProperty('--mouse-y', `${y}%`);
+      });
+    }
+
+    // Draggable Sticky Notes Logic
+    const popover = document.getElementById('new-note-popover');
+    const toggleBtn = document.getElementById('notes-toggle-btn');
+    const cancelBtn = document.getElementById('popover-cancel-btn');
+    const saveBtn = document.getElementById('popover-save-btn');
+    const noteInput = document.getElementById('popover-note-input');
+    const notesContainer = document.getElementById('draggable-notes-container');
+
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      popover.classList.toggle('open');
+      if (popover.classList.contains('open')) {
+        noteInput.focus();
+      }
+    });
+
+    cancelBtn.addEventListener('click', () => {
+      popover.classList.remove('open');
+      noteInput.value = '';
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!popover.contains(e.target) && e.target !== toggleBtn && !toggleBtn.contains(e.target)) {
+        popover.classList.remove('open');
+      }
+    });
+
+    let notes = JSON.parse(localStorage.getItem('sticky_notes')) || [];
+    notes = notes.map((note, index) => {
+      if (!note.id) note.id = Date.now() + index + Math.random();
+      if (note.colorIndex === undefined) note.colorIndex = Math.floor(Math.random() * 5);
+      return note;
+    });
+
+    function saveNotes() {
+      localStorage.setItem('sticky_notes', JSON.stringify(notes));
+    }
+
+    const colorClasses = ['gold', 'mint', 'pink', 'blue', 'purple'];
+
+    function renderNotes() {
+      const oldNotes = document.querySelectorAll('.draggable-note');
+      oldNotes.forEach(el => el.remove());
+      
+      notes.forEach((note, index) => {
+        const noteEl = document.createElement('div');
+        const colorName = colorClasses[note.colorIndex !== undefined ? note.colorIndex : (index % 5)];
+        noteEl.className = `draggable-note note-color-${colorName}`;
+        noteEl.id = `note-${note.id}`;
+        
+        let x = note.x !== undefined ? note.x : (window.innerWidth - 240);
+        let y = note.y !== undefined ? note.y : (100 + (index * 45) % (window.innerHeight - 220));
+        
+        x = Math.max(10, Math.min(x, window.innerWidth - 220));
+        y = Math.max(10, Math.min(y, window.innerHeight - 160));
+        
+        noteEl.style.left = `${x}px`;
+        noteEl.style.top = `${y}px`;
+        
+        noteEl.innerHTML = `
+          <div class="note-header-drag">
+            <div class="note-drag-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <button class="note-close-btn-mini" onclick="deleteNote('${note.id}')" title="Delete Note">&times;</button>
+          </div>
+          <div class="note-body-content">${escapeHtml(note.text)}</div>
+          <div class="note-date-footer">${note.date}</div>
+        `;
+        
+        notesContainer.appendChild(noteEl);
+        initDrag(noteEl, note.id);
+      });
+    }
+
+    function escapeHtml(text) {
+      const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      };
+      return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+    }
+
+    function initDrag(noteEl, noteId) {
+      const handle = noteEl.querySelector('.note-header-drag');
+      let isDragging = false;
+      let startX = 0, startY = 0;
+      let initialX = 0, initialY = 0;
+
+      handle.addEventListener('mousedown', dragStart);
+      handle.addEventListener('touchstart', dragStart, { passive: false });
+
+      function dragStart(e) {
+        isDragging = true;
+        noteEl.classList.add('dragging');
+        
+        initialX = noteEl.offsetLeft;
+        initialY = noteEl.offsetTop;
+
+        if (e.type === 'touchstart') {
+          startX = e.touches[0].clientX;
+          startY = e.touches[0].clientY;
+        } else {
+          startX = e.clientX;
+          startY = e.clientY;
+        }
+
+        document.addEventListener('mousemove', dragMove);
+        document.addEventListener('mouseup', dragEnd);
+        document.addEventListener('touchmove', dragMove, { passive: false });
+        document.addEventListener('touchend', dragEnd);
+      }
+
+      function dragMove(e) {
+        if (!isDragging) return;
+        if (e.type === 'touchmove') e.preventDefault();
+
+        let currentX, currentY;
+        if (e.type === 'touchmove') {
+          currentX = e.touches[0].clientX;
+          currentY = e.touches[0].clientY;
+        } else {
+          currentX = e.clientX;
+          currentY = e.clientY;
+        }
+
+        const dx = currentX - startX;
+        const dy = currentY - startY;
+
+        let newLeft = initialX + dx;
+        let newTop = initialY + dy;
+
+        newLeft = Math.max(10, Math.min(newLeft, window.innerWidth - noteEl.offsetWidth - 10));
+        newTop = Math.max(10, Math.min(newTop, window.innerHeight - noteEl.offsetHeight - 10));
+
+        noteEl.style.left = `${newLeft}px`;
+        noteEl.style.top = `${newTop}px`;
+      }
+
+      function dragEnd() {
+        if (!isDragging) return;
+        isDragging = false;
+        noteEl.classList.remove('dragging');
+
+        document.removeEventListener('mousemove', dragMove);
+        document.removeEventListener('mouseup', dragEnd);
+        document.removeEventListener('touchmove', dragMove);
+        document.removeEventListener('touchend', dragEnd);
+
+        const noteObj = notes.find(n => String(n.id) === String(noteId));
+        if (noteObj) {
+          noteObj.x = noteEl.offsetLeft;
+          noteObj.y = noteEl.offsetTop;
+          saveNotes();
+        }
+      }
+    }
+
+    function addNote() {
+      const text = noteInput.value.trim();
+      if (text === '') return;
+      
+      const newNote = {
+        id: Date.now() + Math.random(),
+        text: text,
+        date: new Date().toLocaleDateString('en-US', { 
+          month: 'short', 
+          day: 'numeric', 
+          hour: '2-digit', 
+          minute: '2-digit' 
+        }),
+        x: window.innerWidth - 230 - (notes.length % 3) * 15,
+        y: 120 + (notes.length % 5) * 45,
+        colorIndex: Math.floor(Math.random() * 5)
+      };
+      
+      notes.unshift(newNote);
+      saveNotes();
+      renderNotes();
+      noteInput.value = '';
+      popover.classList.remove('open');
+    }
+
+    window.deleteNote = function(noteId) {
+      notes = notes.filter(n => String(n.id) !== String(noteId));
+      saveNotes();
+      renderNotes();
+    };
+
+    saveBtn.addEventListener('click', addNote);
+
+    noteInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        addNote();
+      }
+    });
+
+    window.addEventListener('resize', renderNotes);
+    renderNotes();
+  </script>
+
+  <!-- Interactive Curve Arrow Guide -->
+  <script>
+    (function() {
+      const aboutBtn = document.getElementById('about-nav-item');
+      const profilePic = document.querySelector('.profile-container img');
+      const svg = document.getElementById('arrow-overlay-svg');
+      const curvePath = document.getElementById('curve-path');
+
+      function getRelativeBounds(el) {
+        const rect = el.getBoundingClientRect();
+        return {
+          left: rect.left,
+          top: rect.top,
+          width: rect.width,
+          height: rect.height
+        };
+      }
+
+      function updateCurve() {
+        if (!aboutBtn || !profilePic) return;
+        const aboutBounds = getRelativeBounds(aboutBtn);
+        const profileBounds = getRelativeBounds(profilePic);
+
+        const x1 = aboutBounds.left + aboutBounds.width - 15;
+        const y1 = aboutBounds.top + aboutBounds.height / 2;
+
+        const x2 = profileBounds.left + 5;
+        const y2 = profileBounds.top + profileBounds.height / 2;
+
+        const cx = (x1 + x2) / 2 + 60;
+        const cy = (y1 + y2) / 2 - 30;
+
+        curvePath.setAttribute('d', `M ${x1} ${y1} Q ${cx} ${cy} ${x2} ${y2}`);
+      }
+
+      aboutBtn.addEventListener('mouseenter', () => {
+        updateCurve();
+        curvePath.style.opacity = '1';
+        const length = curvePath.getTotalLength();
+        curvePath.style.strokeDasharray = length;
+        curvePath.style.strokeDashoffset = length;
+        curvePath.getBoundingClientRect();
+        curvePath.style.transition = 'stroke-dashoffset 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease';
+        curvePath.style.strokeDashoffset = '0';
+      });
+
+      aboutBtn.addEventListener('mouseleave', () => {
+        curvePath.style.opacity = '0';
+      });
+
+      window.addEventListener('resize', updateCurve);
+      window.addEventListener('scroll', updateCurve, true);
+    })();
+  </script>
+
+  <script src='https://codepen.io/Hyperplexed/pen/xxYJYjM/54407644e24173ad6019b766443bf2a6.js'></script>
+  <!-- Global Hub Script -->
+  <script src="./Script-hub.js"></script>
+</body>
+</html>

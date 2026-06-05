@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ritesh Pandey - Automation Command Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Original Stylesheet -->
+  <link rel="stylesheet" href="./Style.css">
+  <!-- Global Hub Styles -->
+  <link rel="stylesheet" href="./Style-hub.css">
+  <style>
+    /* Prevent any line wrapping issues from stretching the grid */
+    .container {
+      max-width: 850px;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+    /* Dynamic profile pulse animation */
+    @keyframes pulse-glow {
+      0% { transform: scale(0.95); opacity: 0.2; }
+      100% { transform: scale(1.05); opacity: 0.45; }
+    }
+  </style>
+</head>
+<body data-theme="obsidian">
+
+  <!-- Background Animated Blobs -->
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <div id="main-wrapper" class="fancy-scrollbar">
+    <div id="main">
+      <!-- Centered Container for Clean Typography and Spacing -->
+      <div class="container" style="max-width: 850px; padding-top: 1.5rem;">
+        
+        <!-- Header Card (Modern Minimalist Dashboard Header) -->
+        <div class="header-card" style="margin-top: 1.5rem; margin-bottom: 2rem; display: flex; align-items: center; gap: 20px; padding: 1.5rem 2rem; background: rgba(18, 18, 22, 0.45); border: 1px solid rgba(223, 194, 96, 0.2); border-radius: 16px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(223, 194, 96, 0.02); transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);">
+          
+          <!-- Left: Profile Avatar with Gold Glow -->
+          <div class="profile-container" style="position: relative; width: 75px; height: 75px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+            <div class="profile-glow" style="position: absolute; width: 100%; height: 100%; border-radius: 50%; background: var(--theme-accent); filter: blur(10px); opacity: 0.25; animation: pulse-glow 2s infinite alternate;"></div>
+            <img src="https://iili.io/HWhMFrQ.jpg" alt="Ritesh Pandey" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid var(--theme-accent); z-index: 1;" />
+          </div>
+
+          <!-- Right: Command Title & AI App Dock -->
+          <div style="display: flex; flex-direction: column; gap: 6px; flex-grow: 1;">
+            <h2 style="margin: 0; font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.7) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px;">
+              <i class="fa-solid fa-terminal" style="color: var(--theme-accent); font-size: 1.3rem;"></i> Automation Command Center
+            </h2>
+            
+            <!-- AI Mini Dock -->
+            <div class="ai-mini-dock" style="display: flex; align-items: center; gap: 10px; margin-top: 6px;">
+              <!-- Gemini -->
+              <a href="https://gemini.google.com/" target="_blank" class="social-button social-button--gemini" title="Gemini">
+                <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: url(#gemini-grad-dock); flex-shrink: 0;" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="gemini-grad-dock" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#4285f4" />
+                      <stop offset="50%" stop-color="#9b51e0" />
+                      <stop offset="100%" stop-color="#e52592" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z"></path>
+                </svg>
+              </a>
+
+              <!-- Claude -->
+              <a href="https://claude.ai/" target="_blank" class="social-button social-button--claude" title="Claude">
+                <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: #d97706; flex-shrink: 0;" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.709 15.955l4.72-2.647.08-.23-.08-.128H9.2l-.79-.048-2.698-.073-2.339-.097-2.266-.122-.571-.121L0 11.784l.055-.352.48-.321.686.06 1.52.103 2.278.158 1.652.097 2.449.255h.389l.055-.157-.134-.098-.103-.097-2.358-1.596-2.552-1.688-1.336-.972-.724-.491-.364-.462-.158-1.008.656-.722.881.06.225.061.893.686 1.908 1.476 2.491 1.833.365.304.145-.103.019-.073-.164-.274-1.355-2.446-1.446-2.49-.644-1.032-.17-.619a2.97 2.97 0 01-.104-.729L6.283.134 6.696 0l.996.134.42.364.62 1.414 1.002 2.229 1.555 3.03.456.898.243.832.091.255h.158V9.01l.128-1.706.237-2.095.23-2.695.08-.76.376-.91.747-.492.584.28.48.685-.067.444-.286 1.851-.559 2.903-.364 1.942h.212l.243-.242.985-1.306 1.652-2.064.73-.82.85-.904.547-.431h1.033l.76 1.129-.34 1.166-1.064 1.347-.881 1.142-1.264 1.7-.79 1.36.073.11.188-.02 2.856-.606 1.543-.28 1.841-.315.833.388.091.395-.328.807-1.969.486-2.309.462-3.439.813-.042.03.049.061 1.549.146.662.036h1.622l3.02.225.79.522.474.638-.079.485-1.215.62-1.64-.389-3.829-.91-1.312-.329h-.182v.11l1.093 1.068 2.006 1.81 2.509 2.33.127.578-.322.455-.34-.049-2.205-1.657-.851-.747-1.926-1.62h-.128v.17l.444.649 2.345 3.521.122 1.08-.17.353-.608.213-.668-.122-1.374-1.925-1.415-2.167-1.143-1.943-.14.08-.674 7.254-.316.37-.729.28-.607-.461-.322-.747.322-1.476.389-1.924.315-1.53.286-1.9.17-.632-.012-.042-.14.018-1.434 1.967-2.18 2.945-1.726 1.845-.414.164-.717-.37.067-.662.401-.589 2.388-3.036 1.44-1.882.93-1.086-.006-.158h-.055L4.132 18.56l-1.13.146-.487-.456.061-.746.231-.243 1.908-1.312-.006.006z"></path>
+                </svg>
+              </a>
+
+              <!-- ChatGPT -->
+              <a href="https://chatgpt.com/" target="_blank" class="social-button social-button--chatgpt" title="ChatGPT">
+                <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: #10a37f; flex-shrink: 0;" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9.205 8.658v-2.26c0-.19.072-.333.238-.428l4.543-2.616c.619-.357 1.356-.523 2.117-.523 2.854 0 4.662 2.212 4.662 4.566 0 .167 0 .357-.024.547l-4.71-2.759a.797.797 0 00-.856 0l-5.97 3.473zm10.609 8.8V12.06c0-.333-.143-.57-.429-.737l-5.97-3.473 1.95-1.118a.433.433 0 01.476 0l4.543 2.617c1.309.76 2.189 2.378 2.189 3.948 0 1.808-1.07 3.473-2.76 4.163zM7.802 12.703l-1.95-1.142c-.167-.095-.239-.238-.239-.428V5.899c0-2.545 1.95-4.472 4.591-4.472 1 0 1.927.333 2.712.928L8.23 5.067c-.285.166-.428.404-.428.737v6.898zM12 15.128l-2.795-1.57v-3.33L12 8.658l2.795 1.57v3.33L12 15.128zm1.796 7.23c-1 0-1.927-.332-2.712-.927l4.686-2.712c.285-.166.428-.404.428-.737v-6.898l1.974 1.142c.167.095.238.238.238.428v5.233c0 2.545-1.974 4.472-4.614 4.472zm-5.637-5.303l-4.544-2.617c-1.308-.761-2.188-2.378-2.188-3.948A4.482 4.482 0 014.21 6.327v5.423c0 .333.143.571.428.738l5.947 3.449-1.95 1.118a.432.432 0 01-.476 0zm-.262 3.9c-2.688 0-4.662-2.021-4.662-4.519 0-.19.024-.38.047-.57l4.686 2.71c.286.167.571.167.856 0l5.97-3.448v2.26c0 .19-.07.333-.237.428l-4.543 2.616c-.619.357-1.356.523-2.117.523zm5.899 2.83a5.947 5.947 0 005.827-4.756C22.287 18.339 24 15.84 24 13.296c0-1.665-.713-3.282-1.998-4.448.119-.5.19-.999.19-1.498 0-3.401-2.759-5.947-5.946-5.947-.642 0-1.26.095-1.88.31A5.962 5.962 0 0010.205 0a5.947 5.947 0 00-5.827 4.757C1.713 5.447 0 7.945 0 10.49c0 1.666.713 3.283 1.998 4.448-.119.5-.19 1-.19 1.499 0 3.401 2.759 5.946 5.946 5.946.642 0 1.26-.095 1.88-.309a5.96 5.96 0 004.162 1.713z"></path>
+                </svg>
+              </a>
+
+              <!-- NotebookLM -->
+              <a href="https://notebooklm.google/" target="_blank" class="social-button social-button--notebooklm" title="NotebookLM">
+                <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: #0f766e; flex-shrink: 0;" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11.999 3.14C5.372 3.14 0 8.588 0 15.312v5.828h2.212v-.58c0-2.728 2.178-4.938 4.866-4.938 2.688 0 4.866 2.21 4.866 4.937v.581h2.212v-.58c0-3.967-3.17-7.18-7.078-7.18a6.966 6.966 0 00-4.086 1.318C4.2 12.262 6.687 10.59 9.56 10.59c4.057 0 7.347 3.338 7.347 7.453v3.097h2.212v-3.097c0-5.355-4.28-9.698-9.56-9.698a9.438 9.438 0 00-6.217 2.332C4.984 7.528 8.244 5.383 12 5.383c5.406 0 9.788 4.446 9.788 9.93v5.827H24v-5.828C23.999 8.588 18.627 3.14 11.999 3.14z"></path>
+                </svg>
+              </a>
+
+              <!-- Google AI Studio -->
+              <a href="https://aistudio.google.com/" target="_blank" class="social-button social-button--aistudio" title="Google AI Studio">
+                <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: #8b5cf6; flex-shrink: 0;" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9.921 4.196H6.328A2.705 2.705 0 003.623 6.9v11.362a2.705 2.705 0 002.705 2.705h11.363a2.705 2.705 0 002.705-2.705v-4.756l1.623-1.113v5.87a4.329 4.329 0 01-4.328 4.328H6.328A4.329 4.329 0 012 18.263V6.901a4.328 4.329 0 014.328-4.329h4.545l-.952 1.624z"></path>
+                  <path d="M17.82 0c.145 0 .268.104.299.246a7 7 0 001.9 3.484 7 7 0 003.485 1.901c.142.031.246.154.246.3a.308.308 0 01-.246.298A7 7 0 0020.02 8.13a7 7 0 00-1.912 3.535.297.297 0 01-.288.238.297.297 0 01-.288-.238A7 7 0 0015.62 8.13a7 7 0 00-3.535-1.912.297.297 0 01-.238-.288c0-.14.1-.26.238-.288A7 7 0 0015.62 3.73 7.001 7.001 0 0017.521.246.308.308 0 0117.82 0z"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4-Widget Modular Grid Command Center -->
+        <div class="command-center-grid">
+          
+          <!-- Widget 1: Local AI Server Config -->
+          <div class="cc-widget">
+            <div class="widget-title">
+              <i class="fa-solid fa-server"></i> Local AI Server Config
+            </div>
+            <div class="ai-dock-grid" style="display: flex; flex-direction: column; gap: 8px;">
+              
+              <!-- DeepSeek R1 -->
+              <div class="ai-card" style="display: flex; justify-content: space-between; align-items: center; pointer-events: none; border-color: rgba(223,194,96,0.1);">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <i class="fa-solid fa-brain" style="color: var(--theme-accent); font-size: 1rem;"></i>
+                  <div class="ai-label">
+                    <span class="ai-name">DeepSeek R1 (8B)</span>
+                    <span class="ai-desc">Active inference model</span>
+                  </div>
+                </div>
+                <span style="font-size: 0.75rem; background: rgba(39, 201, 63, 0.15); color: #27c93f; padding: 2px 8px; border-radius: 4px; font-weight: 600; font-family: monospace;">LOADED</span>
+              </div>
+
+              <!-- Qwen 2.5 Coder -->
+              <div class="ai-card" style="display: flex; justify-content: space-between; align-items: center; pointer-events: none; border-color: rgba(223,194,96,0.1);">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <i class="fa-solid fa-code" style="color: var(--theme-accent); font-size: 1rem;"></i>
+                  <div class="ai-label">
+                    <span class="ai-name">Qwen 2.5 Coder (7B)</span>
+                    <span class="ai-desc">Code completion helper</span>
+                  </div>
+                </div>
+                <span style="font-size: 0.75rem; background: rgba(255, 255, 255, 0.05); color: rgba(255,255,255,0.4); padding: 2px 8px; border-radius: 4px; font-weight: 600; font-family: monospace;">STANDBY</span>
+              </div>
+
+              <!-- Ollama Engine -->
+              <div class="ai-card" style="display: flex; justify-content: space-between; align-items: center; pointer-events: none; border-color: rgba(223,194,96,0.1);">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <i class="fa-solid fa-network-wired" style="color: var(--theme-accent); font-size: 1rem;"></i>
+                  <div class="ai-label">
+                    <span class="ai-name">Ollama Engine Node</span>
+                    <span class="ai-desc">localhost:11434</span>
+                  </div>
+                </div>
+                <span style="font-size: 0.75rem; background: rgba(39, 201, 63, 0.15); color: #27c93f; padding: 2px 8px; border-radius: 4px; font-weight: 600; font-family: monospace;">ONLINE</span>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Widget 2: Daily Focus & Macros -->
+          <div class="cc-widget">
+            <div class="widget-title">
+              <i class="fa-solid fa-graduation-cap"></i> Daily Focus & Macros
+            </div>
+            
+            <div style="margin-bottom: 1.25rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); padding: 0.75rem 1rem; border-radius: 8px;">
+              <div class="focus-label">Daily Quote</div>
+              <div class="focus-quote" id="daily-banner-quote" style="margin-bottom: 0.75rem; word-wrap: break-word;">"Loading daily motivation quote..."</div>
+              
+              <div class="focus-label">Daily Challenge</div>
+              <div class="focus-challenge" id="daily-banner-challenge" style="word-wrap: break-word;">Loading daily workflow challenge...</div>
+            </div>
+
+            <div>
+              <div class="focus-label">Featured Workflow: <span id="cc-macro-platform" style="color: var(--theme-accent); font-weight: 700;">Loading...</span></div>
+              <div class="code-container" style="background: #060608; border-color: rgba(223, 194, 96, 0.1); margin-top: 0.5rem; max-height: 140px; overflow: auto;">
+                <pre style="margin: 0; white-space: pre-wrap; word-wrap: break-word; word-break: break-all;"><code id="cc-macro-code" style="color: #dfc260; font-size: 0.8rem; white-space: pre-wrap; word-wrap: break-word; word-break: break-all; font-family: 'Courier New', Courier, monospace;">Loading script...</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- Widget 3: Agent Telemetry Console -->
+          <div class="cc-widget">
+            <div class="widget-title">
+              <i class="fa-solid fa-circle-nodes"></i> Telemetry Console
+            </div>
+            
+            <!-- Item 1: Agent Load -->
+            <div class="telemetry-item">
+              <div class="telemetry-meta">
+                <span>Agent Executor Activity</span>
+                <span class="telemetry-value">28% Load</span>
+              </div>
+              <div class="telemetry-bar-bg">
+                <div class="telemetry-bar-fill" style="width: 28%; background: var(--theme-accent);"></div>
+              </div>
+            </div>
+
+            <!-- Item 2: Ollama Services Uptime -->
+            <div class="telemetry-item">
+              <div class="telemetry-meta">
+                <span>Ollama Services (DeepSeek R1)</span>
+                <span class="telemetry-value"><span class="status-indicator-dot online"></span> Active</span>
+              </div>
+              <div class="telemetry-bar-bg">
+                <div class="telemetry-bar-fill" style="width: 100%; background: #27c93f;"></div>
+              </div>
+            </div>
+
+            <!-- Item 3: Macro Success Rate -->
+            <div class="telemetry-item">
+              <div class="telemetry-meta">
+                <span>Macro Run Verification Rate</span>
+                <span class="telemetry-value">98.4% Passed</span>
+              </div>
+              <div class="telemetry-bar-bg">
+                <div class="telemetry-bar-fill" style="width: 98.4%; background: var(--theme-accent);"></div>
+              </div>
+            </div>
+
+            <!-- Item 4: Connected MCP Servers -->
+            <div class="telemetry-item" style="margin-bottom: 0;">
+              <div class="telemetry-meta">
+                <span>Connected MCP Hosts</span>
+                <span class="telemetry-value">4 Active Nodes</span>
+              </div>
+              <div class="telemetry-bar-bg">
+                <div class="telemetry-bar-fill" style="width: 80%; background: var(--theme-accent);"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Widget 4: Command Center Links -->
+          <div class="cc-widget">
+            <div class="widget-title">
+              <i class="fa-solid fa-compass"></i> Command Links
+            </div>
+            
+            <div class="nav-links-stack">
+              <a href="./portfolio.html" class="nav-link-btn">
+                <span><i class="fa-solid fa-user" style="margin-right: 8px; color: var(--theme-accent);"></i> My Info & Portfolio</span>
+                <span class="nav-link-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+              </a>
+              
+              <a href="./automation-hub.html" class="nav-link-btn">
+                <span><i class="fa-solid fa-robot" style="margin-right: 8px; color: var(--theme-accent);"></i> AI & Automation Hub</span>
+                <span class="nav-link-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+              </a>
+
+              <a href="./codeislove.html" class="nav-link-btn">
+                <span><i class="fa-solid fa-heart" style="margin-right: 8px; color: var(--theme-accent);"></i> Classic Coding is Love</span>
+                <span class="nav-link-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+              </a>
+
+              <button class="nav-link-btn" onclick="toggleTerminal()">
+                <span><i class="fa-solid fa-terminal" style="margin-right: 8px; color: var(--theme-accent);"></i> Hacker Console</span>
+                <span class="nav-link-shortcut">Ctrl+`</span>
+              </button>
+
+              <button class="nav-link-btn" onclick="window.dispatchEvent(new Event('palette-trigger'))">
+                <span><i class="fa-solid fa-magnifying-glass" style="margin-right: 8px; color: var(--theme-accent);"></i> Command Palette</span>
+                <span class="nav-link-shortcut">Ctrl+K</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Float Menu Switcher (Slide-out menu on left edge) -->
+  <div id="theme-switcher-trigger"></div>
+  <div id="theme-switcher">
+    <button class="theme-btn" data-theme="midnight" title="Midnight Cyan" style="background: #00aad4;"></button>
+    <button class="theme-btn" data-theme="cyberpunk" title="Cyberpunk Pink" style="background: #ff0080;"></button>
+    <button class="theme-btn" data-theme="emerald" title="Neon Emerald" style="background: #00e676;"></button>
+    <button class="theme-btn" data-theme="sunset" title="Sunset Rose" style="background: #ff5722;"></button>
+    <button class="theme-btn" data-theme="space" title="Aura Blue" style="background: #00bfff;"></button>
+    <button class="theme-btn active" data-theme="obsidian" title="Obsidian Gold" style="background: #dfc260;"></button>
+  </div>
+
+  <!-- Legacy themes scripts -->
+  <script>
+    // Theme Switcher Logic
+    const themeButtons = document.querySelectorAll('.theme-btn');
+    
+    function setTheme(themeName) {
+      document.body.setAttribute('data-theme', themeName);
+      localStorage.setItem('theme', themeName);
+      
+      themeButtons.forEach(btn => {
+        if (btn.getAttribute('data-theme') === themeName) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+
+    const savedTheme = localStorage.getItem('theme') || 'obsidian';
+    setTheme(savedTheme);
+
+    themeButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const theme = btn.getAttribute('data-theme');
+        setTheme(theme);
+      });
+    });
+
+    // Sync theme-button active status on load
+    const activeTheme = localStorage.getItem('theme') || 'obsidian';
+    themeButtons.forEach(btn => {
+      if (btn.getAttribute('data-theme') === activeTheme) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+  </script>
+  
+  <script src='https://codepen.io/Hyperplexed/pen/xxYJYjM/54407644e24173ad6019b766443bf2a6.js'></script>
+  <!-- Global Hub Script -->
+  <script src="./Script-hub.js"></script>
+</body>
+</html>

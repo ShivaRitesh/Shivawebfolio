@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ritesh - AI & Automation Hub</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Original Styles (for variable definitions and core themes) -->
+  <link rel="stylesheet" href="./Style.css">
+  <!-- Hub Styles -->
+  <link rel="stylesheet" href="./Style-hub.css">
+</head>
+<body data-theme="midnight">
+  
+  <!-- Background Animated Blobs -->
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <div class="container">
+    
+    <!-- Hub Header -->
+    <header class="hub-header" style="margin-top: 1rem;">
+      <h1>AI & Automation Hub</h1>
+      <p>Master prompt engineering, build local workflows, and leverage automation</p>
+    </header>
+
+    <!-- Two-Column Grid for Prompts and Summaries -->
+    <div class="hub-layout">
+      
+      <!-- Left Column: Pro Advanced Prompts -->
+      <section class="hub-column">
+        <h2 class="hub-column-title">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> Pro Advanced Prompts
+        </h2>
+        <div class="hub-cards-stack">
+          
+          <!-- Prompt 1 -->
+          <article class="glass-card" style="display: flex; flex-direction: column;">
+            <span class="card-tag work">Work Automation</span>
+            <h3 id="prompt-1-title" style="font-weight: 700; margin-bottom: 0.75rem; font-size: 1.1rem; color: #ffffff;">Loading title...</h3>
+            <div id="prompt-1-text" class="prompt-text-box">Loading daily prompt...</div>
+            <div class="prompt-card-actions">
+              <button class="btn-mini" onclick="copyPromptToClipboard('prompt-1-text', this)">
+                <i class="fa-regular fa-clipboard"></i> Copy Prompt
+              </button>
+              <a href="https://chatgpt.com" target="_blank" class="btn-mini">
+                <i class="fa-solid fa-bolt"></i> Run GPT
+              </a>
+            </div>
+          </article>
+
+          <!-- Prompt 2 -->
+          <article class="glass-card" style="display: flex; flex-direction: column;">
+            <span class="card-tag image">AI Image Gen</span>
+            <h3 id="prompt-2-title" style="font-weight: 700; margin-bottom: 0.75rem; font-size: 1.1rem; color: #ffffff;">Loading title...</h3>
+            <div id="prompt-2-text" class="prompt-text-box">Loading daily prompt...</div>
+            <div class="prompt-card-actions">
+              <button class="btn-mini" onclick="copyPromptToClipboard('prompt-2-text', this)">
+                <i class="fa-regular fa-clipboard"></i> Copy Prompt
+              </button>
+              <a href="https://aistudio.google.com" target="_blank" class="btn-mini">
+                <i class="fa-solid fa-wand-magic"></i> Run Gemini
+              </a>
+            </div>
+          </article>
+
+          <!-- Prompt 3 -->
+          <article class="glass-card" style="display: flex; flex-direction: column;">
+            <span class="card-tag trend">New Trending Tech</span>
+            <h3 id="prompt-3-title" style="font-weight: 700; margin-bottom: 0.75rem; font-size: 1.1rem; color: #ffffff;">Loading title...</h3>
+            <div id="prompt-3-text" class="prompt-text-box">Loading daily prompt...</div>
+            <div class="prompt-card-actions">
+              <button class="btn-mini" onclick="copyPromptToClipboard('prompt-3-text', this)">
+                <i class="fa-regular fa-clipboard"></i> Copy Prompt
+              </button>
+              <a href="https://chatgpt.com" target="_blank" class="btn-mini">
+                <i class="fa-solid fa-bolt"></i> Run GPT
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- Right Column: AI Short Summaries -->
+      <section class="hub-column">
+        <h2 class="hub-column-title">
+          <i class="fa-solid fa-graduation-cap"></i> AI Short Summaries
+        </h2>
+        <div class="hub-cards-stack">
+          
+          <!-- Summary 1 -->
+          <article class="glass-card">
+            <span class="card-tag summary">AI Concept</span>
+            <h3 id="summary-1-title" style="font-weight: 700; margin-bottom: 0.75rem; font-size: 1.1rem; color: var(--theme-accent);">Loading summary...</h3>
+            <p id="summary-1-text" style="font-size: 0.9rem; line-height: 1.6; color: rgba(255, 255, 255, 0.8);">Loading content...</p>
+          </article>
+
+          <!-- Summary 2 -->
+          <article class="glass-card">
+            <span class="card-tag summary">AI Concept</span>
+            <h3 id="summary-2-title" style="font-weight: 700; margin-bottom: 0.75rem; font-size: 1.1rem; color: var(--theme-accent);">Loading summary...</h3>
+            <p id="summary-2-text" style="font-size: 0.9rem; line-height: 1.6; color: rgba(255, 255, 255, 0.8);">Loading content...</p>
+          </article>
+
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Macros & Device Automation Section -->
+    <section class="macros-section">
+      <h2 class="hub-column-title">
+        <i class="fa-solid fa-code"></i> Daily Macros Corner (PC & Android)
+      </h2>
+      <div class="macro-device-grid">
+        
+        <!-- PC Automation -->
+        <div class="glass-card" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+          <div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+              <span style="font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: #a6ffb2; letter-spacing: 1px;">PC Automation</span>
+              <span id="macro-pc-diff" class="difficulty-rating"></span>
+            </div>
+            <h3 id="macro-pc-title" style="font-weight: 700; font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--theme-accent);">Loading...</h3>
+            <p id="macro-pc-desc" style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-bottom: 1rem; line-height: 1.4;">Loading description...</p>
+            
+            <div class="code-container">
+              <div class="code-header">
+                <span>AHK / PYTHON</span>
+                <button class="btn-mini" onclick="copyPromptToClipboard('macro-pc-code', this)" style="padding: 4px 10px; font-size: 0.7rem;">
+                  <i class="fa-regular fa-clipboard"></i> Copy Code
+                </button>
+              </div>
+              <pre><code id="macro-pc-code">Loading script...</code></pre>
+            </div>
+          </div>
+          <div style="font-size: 0.8rem; color: rgba(255,255,255,0.4); margin-top: 0.75rem;">
+            <i class="fa-solid fa-circle-info"></i> How to use: Copy standard text and run using AutoHotkey interpreter or Python compiler on your PC.
+          </div>
+        </div>
+
+        <!-- Android Automation -->
+        <div class="glass-card" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+          <div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+              <span style="font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: #00bfff; letter-spacing: 1px;">Android Automation</span>
+              <span id="macro-android-diff" class="difficulty-rating"></span>
+            </div>
+            <h3 id="macro-android-title" style="font-weight: 700; font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--theme-accent);">Loading...</h3>
+            <p id="macro-android-desc" style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-bottom: 1rem; line-height: 1.4;">Loading description...</p>
+            
+            <div class="code-container">
+              <div class="code-header">
+                <span>TASKER XML / FLOW</span>
+                <button class="btn-mini" onclick="copyPromptToClipboard('macro-android-code', this)" style="padding: 4px 10px; font-size: 0.7rem;">
+                  <i class="fa-regular fa-clipboard"></i> Copy Code
+                </button>
+              </div>
+              <pre><code id="macro-android-code">Loading script...</code></pre>
+            </div>
+          </div>
+          <div style="font-size: 0.8rem; color: rgba(255,255,255,0.4); margin-top: 0.75rem;">
+            <i class="fa-solid fa-circle-info"></i> How to use: Import commands directly to Tasker, or set up triggers matching these profiles in MacroDroid.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Community contribution and chat links -->
+    <section class="glass-card" style="margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.25rem;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; color: var(--theme-accent); border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 0.5rem; margin-bottom: 0.5rem;">
+        Join the Automation Community
+      </h3>
+      <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 2.5rem;" class="macro-device-grid">
+        
+        <!-- Workflow submission form -->
+        <div>
+          <p style="font-size: 0.9rem; color: rgba(255,255,255,0.75); margin-bottom: 1.25rem; line-height: 1.5;">
+            Have a cool Tasker profile or prompt that saves you hours? Submit it here to share it with other coders and non-coders in our daily corners!
+          </p>
+          <form onsubmit="event.preventDefault(); alert('Workflow submitted! Thank you for sharing.'); this.reset();">
+            <div class="form-group">
+              <label for="sub-title">Workflow Name</label>
+              <input type="text" id="sub-title" class="form-control" placeholder="E.g. Auto Excel sorter" required>
+            </div>
+            <div class="form-group">
+              <label for="sub-code">Snippet / XML / Prompt</label>
+              <textarea id="sub-code" class="form-control" placeholder="Paste your prompt template or macro script here..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="margin-top: 0.5rem;">Submit Workflow</button>
+          </form>
+        </div>
+
+        <!-- Links to external channels -->
+        <div style="display: flex; flex-direction: column; justify-content: center; gap: 1rem; border-left: 1px solid rgba(255,255,255,0.08); padding-left: 2rem;" class="contact-links-panel">
+          <h4 style="font-weight: 700; font-size: 1.1rem; color: var(--theme-accent);">Connect & Learn</h4>
+          <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.5;">
+            Join our chat channels to collaborate, ask questions, get help debug automation rules, and learn about the latest AI tooling alongside 100+ automation developers.
+          </p>
+          <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 0.5rem;">
+            <a href="https://t.me/" target="_blank" class="btn-mini" style="padding: 12px; justify-content: center; font-size: 0.9rem; font-weight: 600;">
+              <i class="fa-brands fa-telegram" style="color: #229ED9; font-size: 1.2rem;"></i> Join Telegram Chat
+            </a>
+            <a href="https://discord.com" target="_blank" class="btn-mini" style="padding: 12px; justify-content: center; font-size: 0.9rem; font-weight: 600;">
+              <i class="fa-brands fa-discord" style="color: #7289da; font-size: 1.2rem;"></i> Join Discord Server
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Global Script -->
+  <script src="./Script-hub.js"></script>
+</body>
+</html>
