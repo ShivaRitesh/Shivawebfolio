@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ritesh - Interactive AI Playground</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Original Styles (for variable definitions and core themes) -->
+  <link rel="stylesheet" href="./Style.css">
+  <!-- Hub Styles -->
+  <link rel="stylesheet" href="./Style-hub.css">
+</head>
+<body data-theme="obsidian">
+  
+  <!-- Background Animated Blobs -->
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <div class="container">
+    
+    <!-- Header -->
+    <header class="hub-header" style="margin-top: 1rem;">
+      <h1>Interactive AI Playground</h1>
+      <p>Select a blueprint template, configure your requirements, and synthesize custom automation scripts instantly</p>
+    </header>
+
+    <!-- Playground Workspace -->
+    <div class="playground-layout">
+      
+      <!-- Left Column: Templates & Prompt Editor -->
+      <div class="playground-column">
+        
+        <!-- Template Selection -->
+        <div class="glass-card" style="display: flex; flex-direction: column; gap: 0.8rem;">
+          <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--theme-accent); margin: 0; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-cubes"></i> 1. Select Blueprint
+          </h3>
+          
+          <div class="template-grid">
+            <div class="template-card active" data-template="ahk-dnd">
+              <i class="fa-solid fa-keyboard"></i>
+              <div>
+                <span class="template-card-title">AHK: Auto DND Focus</span>
+                <span class="template-card-desc">Windows shortcut to mute all and load terminal</span>
+              </div>
+            </div>
+            
+            <div class="template-card" data-template="py-scraper">
+              <i class="fa-brands fa-python"></i>
+              <div>
+                <span class="template-card-title">Py: Auto Web Scraper</span>
+                <span class="template-card-desc">Downloads daily wallpapers & quotes</span>
+              </div>
+            </div>
+
+            <div class="template-card" data-template="tasker-geo">
+              <i class="fa-solid fa-mobile-screen-button"></i>
+              <div>
+                <span class="template-card-title">Tasker: GPS Geofence</span>
+                <span class="template-card-desc">Android sound profile switch based on home Wi-Fi</span>
+              </div>
+            </div>
+
+            <div class="template-card" data-template="prompt-refactor">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              <div>
+                <span class="template-card-title">AI: Code Refactor Lead</span>
+                <span class="template-card-desc">Structured system prompt for deep reasoning</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prompt Customizer -->
+        <div class="glass-card prompt-area-wrapper">
+          <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--theme-accent); margin: 0; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-sliders"></i> 2. Customize Parameters
+          </h3>
+          <textarea class="prompt-textarea" id="playground-prompt-input" placeholder="Configure prompt variables..."></textarea>
+          
+          <!-- Synthesize Progress Bar -->
+          <div class="synth-progress-bar" id="playground-synth-progress">
+            <div class="synth-progress-fill" id="playground-synth-fill"></div>
+          </div>
+
+          <button class="synth-btn" id="playground-btn-synth">
+            <i class="fa-solid fa-microchip"></i> Synthesize Code Script
+          </button>
+        </div>
+
+        <!-- Telemetry Logs -->
+        <div class="playground-console" id="playground-log-console">
+          &gt; Select a blueprint above to begin compilation...
+        </div>
+
+      </div>
+
+      <!-- Right Column: Live Output Code Editor -->
+      <div class="playground-column">
+        <div class="glass-card code-output-card">
+          <div class="editor-header">
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--theme-accent); margin: 0; display: flex; align-items: center; gap: 8px;">
+              <i class="fa-solid fa-laptop-code"></i> Output Script
+            </h3>
+            
+            <div class="editor-tabs">
+              <button class="editor-tab-btn active" id="btn-tab-code">CODE</button>
+              <button class="editor-tab-btn" id="btn-tab-log">ANALYSIS</button>
+            </div>
+          </div>
+
+          <!-- Code Display Box -->
+          <div class="code-output-box" id="playground-output-code">
+            <code>&gt; Waiting for parameters...</code>
+          </div>
+
+          <!-- Editor Actions -->
+          <div class="editor-actions" style="margin-top: 1rem; display: flex; justify-content: flex-end; gap: 8px;">
+            <button class="rakshit-btn" id="playground-btn-copy" style="height: 34px;">
+              <i class="fa-regular fa-clipboard"></i> Copy Output
+            </button>
+            <button class="rakshit-btn" id="playground-btn-download" style="height: 34px; background: rgba(var(--theme-accent-rgb), 0.1); border-color: rgba(var(--theme-accent-rgb), 0.3); color: var(--theme-accent);">
+              <i class="fa-solid fa-download"></i> Download Script
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Global Script -->
+  <script src="./Script-hub.js"></script>
+</body>
+</html>
