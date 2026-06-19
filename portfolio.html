@@ -75,6 +75,7 @@
           <button class="portfolio-tab-btn active" data-target="about-view">About</button>
           <button class="portfolio-tab-btn" data-target="skills-view">Skills</button>
           <button class="portfolio-tab-btn" data-target="projects-view">Projects</button>
+          <button class="portfolio-tab-btn" data-target="rakshit-view">Letters to Rakshit</button>
           <button class="portfolio-tab-btn" data-target="contact-view">Contact</button>
         </nav>
 
@@ -241,6 +242,46 @@
               </div>
             </article>
 
+          </div>
+        </section>
+
+        <!-- Rakshit's Letters View -->
+        <section id="rakshit-view" class="portfolio-view glass-card">
+          <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--theme-accent); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-heart" style="color: #ff3366;"></i> Letters to Rakshit
+          </h3>
+          <div class="rakshit-milestone-banner" style="margin-bottom: 1.25rem;">
+            <i class="fa-solid fa-cake-candles" style="color: var(--theme-accent);"></i>
+            <span id="rakshit-milestone-text">Today completed his 8th month! Milestone Celebrated!</span>
+          </div>
+          
+          <div style="display: flex; gap: 15px; flex-direction: column;">
+            <div id="rakshit-portfolio-body" style="white-space: pre-wrap; line-height: 1.6; font-size: 0.98rem; color: rgba(255, 255, 255, 0.95); background: rgba(0,0,0,0.2); padding: 1.25rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); min-height: 180px; max-height: 350px; overflow-y: auto;">
+              Loading Letter...
+            </div>
+            
+            <div class="rakshit-controls-row">
+              <div class="letter-select-wrapper" style="min-width: 200px;">
+                <span class="letter-select-label">Archive Collection</span>
+                <select class="letter-select-dropdown" id="letter-portfolio-select">
+                  <option value="unique" selected>✨ Today's Special (Dynamic Note)</option>
+                  <option value="month5">💙 5th Month - Lullabies</option>
+                  <option value="month6">💙 6th Month - Champ's Smile</option>
+                  <option value="month7">💙 7th Month - Warrior's Grip</option>
+                  <option value="month8">🎉 8th Month Special (Completed Today!)</option>
+                  <option value="month9">💙 9th Month - First Words</option>
+                  <option value="month10">💙 10th Month - Crawling World</option>
+                  <option value="month11">💙 11th Month - Grow Sweetly</option>
+                  <option value="month12">🎂 1st Birthday Celebration</option>
+                </select>
+              </div>
+              <button class="rakshit-btn" id="rakshit-portfolio-regen" style="margin-top: 14px;" title="Generate another custom note">
+                <i class="fa-solid fa-rotate"></i> New Note
+              </button>
+              <button class="rakshit-btn rakshit-btn--love" id="rakshit-portfolio-love" style="margin-top: 14px;" title="Send love and float pulse glow">
+                <i class="fa-solid fa-heart-circle-bolt"></i> Send Love
+              </button>
+            </div>
           </div>
         </section>
 
