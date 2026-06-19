@@ -232,6 +232,7 @@ class CommandPalette {
     this.commands = [
       { id: 'go-home', label: 'Go to Home (Dashboard)', icon: 'fa-home', action: () => window.location.href = './index.html' },
       { id: 'go-hub', label: 'Go to AI & Automation Hub', icon: 'fa-robot', action: () => window.location.href = './automation-hub.html' },
+      { id: 'go-playground', label: 'Go to AI Playground', icon: 'fa-gamepad', action: () => window.location.href = './ai-playground.html' },
       { id: 'go-portfolio', label: 'Go to Portfolio (My Info)', icon: 'fa-user', action: () => window.location.href = './portfolio.html' },
       { id: 'toggle-term', label: 'Toggle Hacker Terminal', icon: 'fa-terminal', action: () => toggleTerminal() },
       { id: 'theme-mid', label: 'Theme: Midnight Cyan', icon: 'fa-palette', action: () => globalSetTheme('midnight') },
@@ -1262,6 +1263,7 @@ function insertFloatingNavigation() {
 
   const isPortfolio = currentPath.includes('portfolio.html');
   const isHub = currentPath.includes('automation-hub.html');
+  const isPlayground = currentPath.includes('ai-playground.html');
 
   const nav = document.createElement('div');
   nav.className = 'floating-nav';
@@ -1274,6 +1276,9 @@ function insertFloatingNavigation() {
     </a>
     <a href="./automation-hub.html" class="floating-nav-item ${isHub ? 'active' : ''}">
       <i class="fa-solid fa-robot"></i> <span>Automation Hub</span>
+    </a>
+    <a href="./ai-playground.html" class="floating-nav-item ${isPlayground ? 'active' : ''}">
+      <i class="fa-solid fa-gamepad"></i> <span>Playground</span>
     </a>
     <a href="./portfolio.html" class="floating-nav-item ${isPortfolio ? 'active' : ''}">
       <i class="fa-solid fa-user"></i> <span>My Info</span>
@@ -1416,8 +1421,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Show Letters to Rakshit Popup modal on load
-  initRakshitModal();
+  // Initialize new visual components
+  initJarvisHUD();
+  initRakshitPortfolio();
+  initAIPlayground();
 });
 
 // --- Dynamic Letters to Rakshit Popups ---
@@ -1950,3 +1957,459 @@ function initRakshitModal() {
     if (e.target === overlay) closeModal();
   });
 }
+
+// --- Jarvis Command Center Console HUD ---
+function initJarvisHUD() {
+  const consoleBody = document.getElementById('jarvis-hud-body');
+  if (!consoleBody) return;
+
+  const data = getDailyData();
+  const currentThemeName = localStorage.getItem('theme') || 'obsidian';
+
+  const lines = [
+    { text: "> SECURE SHELL ESTABLISHED ON HOST NODE 127.0.0.1", class: "jarvis-sys" },
+    { text: "> LOADED OLLAMA LOCAL WORKFLOW DAEMON [PORT: 11434]", class: "jarvis-sys" },
+    { text: "> ACTIVE MODEL: DeepSeek R1 (8B LLM) - STATE: READY", class: "jarvis-ok" },
+    { text: "> DIAGNOSTICS: 4 Connected MCP Servers online.", class: "jarvis-ok" },
+    { text: `&gt; ENVIRONMENT: Theme set to [${currentThemeName.toUpperCase()}]. Sound Engine initialized.`, class: "jarvis-sys" },
+    { text: "> FAMILY ALERT: Rakshit is 8 months old today! Milestone celebrated. ❤️", class: "jarvis-highlight" },
+    { text: `&gt; DAILY QUOTE: "${data.quote.text}"`, class: "jarvis-info" },
+    { text: `&gt; PROMPT CHALLENGE: ${data.quote.challenge}`, class: "jarvis-info" },
+    { text: "> SYSTEM STANDBY. WELCOME BACK, OPERATOR RITESH.", class: "jarvis-ok" }
+  ];
+
+  consoleBody.innerHTML = '';
+  let lineIndex = 0;
+
+  function typeLine() {
+    if (lineIndex >= lines.length) return;
+
+    const lineData = lines[lineIndex];
+    const div = document.createElement('div');
+    div.className = `jarvis-line ${lineData.class || ''}`;
+    consoleBody.appendChild(div);
+
+    const fullText = lineData.text;
+    let charIndex = 0;
+
+    synth.playTone(600 + (lineIndex * 40), 0.04, 'triangle', 0.02);
+
+    function typeChar() {
+      if (charIndex < fullText.length) {
+        // Handle escaped HTML like &gt;
+        if (fullText.substr(charIndex, 4) === '&gt;') {
+          div.innerHTML += '&gt;';
+          charIndex += 4;
+        } else {
+          div.innerHTML += fullText.charAt(charIndex);
+          charIndex++;
+        }
+        setTimeout(typeChar, 6);
+      } else {
+        lineIndex++;
+        consoleBody.scrollTop = consoleBody.scrollHeight;
+        setTimeout(typeLine, 120);
+      }
+    }
+
+    typeChar();
+  }
+
+  setTimeout(typeLine, 400);
+}
+
+// --- Letters to Rakshit Portfolio Tab Controller ---
+function initRakshitPortfolio() {
+  const textBody = document.getElementById('rakshit-portfolio-body');
+  const dropdown = document.getElementById('letter-portfolio-select');
+  const btnRegen = document.getElementById('rakshit-portfolio-regen');
+  const btnLove = document.getElementById('rakshit-portfolio-love');
+
+  if (!textBody || !dropdown) return;
+
+  // Initialize with dynamic letter
+  textBody.textContent = generateUniqueLetter();
+
+  // Dropdown select change
+  dropdown.addEventListener('change', (e) => {
+    const val = e.target.value;
+    synth.playClick();
+    if (val === 'unique') {
+      textBody.textContent = generateUniqueLetter();
+    } else {
+      let monthKey = "";
+      if (val === 'month5') monthKey = "5th Month";
+      else if (val === 'month6') monthKey = "6th Month";
+      else if (val === 'month7') monthKey = "7th Month";
+      else if (val === 'month8') monthKey = "8th Month";
+      else if (val === 'month9') monthKey = "9th Month";
+      else if (val === 'month10') monthKey = "10th Month";
+      else if (val === 'month11') monthKey = "11th Month";
+      else if (val === 'month12') monthKey = "12th Month";
+      
+      const found = rakshitLetters.find(l => l.month.includes(monthKey));
+      if (found) {
+        textBody.textContent = found.text;
+      }
+    }
+    textBody.scrollTop = 0;
+  });
+
+  // Regenerate button
+  if (btnRegen) {
+    btnRegen.addEventListener('click', () => {
+      synth.playBeep();
+      dropdown.value = 'unique';
+      textBody.textContent = generateUniqueLetter();
+      textBody.scrollTop = 0;
+    });
+  }
+
+  // Send Love button
+  if (btnLove) {
+    btnLove.addEventListener('click', () => {
+      synth.playTone(659.25, 0.12, 'sine', 0.05); // E5
+      setTimeout(() => synth.playTone(880, 0.15, 'sine', 0.05), 60); // A5
+      setTimeout(() => synth.playTone(1318.51, 0.2, 'sine', 0.06), 120); // E6
+
+      // Show heartbeat pulse effect around the card container
+      const card = textBody.closest('.portfolio-view');
+      if (card) {
+        card.classList.add('heart-pulse-glow');
+        setTimeout(() => card.classList.remove('heart-pulse-glow'), 1000);
+      }
+    });
+  }
+}
+
+// --- Interactive AI Playground Controller ---
+const playgroundTemplates = {
+  'ahk-dnd': {
+    prompt: `Synthesize a Windows AutoHotkey (v1.1) automation hotkey script that:
+1. Presses Win+D to clear the screen.
+2. Turns on Do Not Disturb / Focus Mode.
+3. Automatically opens Windows Terminal (wt.exe) or cmd.
+4. Mutes system volume.`,
+    code: `; AutoHotkey: DND Focus Mode Launcher
+; Press Win + Shift + F to trigger focus sequence
+#+f::
+  Send, #d ; Minimize all windows to desktop
+  Sleep, 200
+  
+  ; Mute System Volume
+  SoundSet, 1, , MUTE
+  
+  ; Run Terminal
+  Run, wt.exe
+  Sleep, 500
+  
+  ; Notification sound chime (ascending beeps)
+  SoundPlay, *16 
+  MsgBox, 64, System Notification, Focus Mode Activated. Good luck coding!
+return`,
+    analysis: `Type: Windows Keyboard Macro (AutoHotkey)
+Language: AutoHotkey Script (.ahk)
+Complexity: Low (2/5)
+Execution Instructions:
+1. Ensure AutoHotkey is installed on Windows.
+2. Copy code block and save as 'DNDFocus.ahk'.
+3. Double-click the file to execute.
+4. Press Win+Shift+F to initialize focus sequence.`
+  },
+  'py-scraper': {
+    prompt: `Create a Python script that downloads a random high-res image from Unsplash (Source API) matching tags "minimalist, workstation" and set it as your daily desktop wallpaper. Log success to a local logs file.`,
+    code: `import urllib.request
+import ctypes
+import os
+import datetime
+
+# Unsplash Source API configuration
+unsplash_url = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1920"
+wallpaper_path = os.path.expanduser("~/unsplash_daily.jpg")
+log_path = os.path.expanduser("~/wallpaper_updater.log")
+
+try:
+    print("Fetching dynamic source image...")
+    urllib.request.urlretrieve(unsplash_url, wallpaper_path)
+    
+    # Set Windows Desktop Wallpaper using SystemParametersInfo
+    ctypes.windll.user32.SystemParametersInfoW(20, 0, wallpaper_path, 3)
+    
+    # Log script success run timestamp
+    with open(log_path, "a") as log:
+        log.write(f"[{datetime.datetime.now()}] Success: Desktop updated\\n")
+    print("Desktop wallpaper updated successfully!")
+    
+except Exception as e:
+    with open(log_path, "a") as log:
+        log.write(f"[{datetime.datetime.now()}] Error: {str(e)}\\n")
+    print(f"Update failed. Check log file: {log_path}")`,
+    analysis: `Type: Python Desktop Automation Utility
+Language: Python 3.x (.py)
+Complexity: Medium (3/5)
+Dependencies: ctypes (standard), urllib (standard)
+Execution Instructions:
+1. Copy code block and save as 'set_wallpaper.py'.
+2. Run via terminal: python set_wallpaper.py.
+3. Check the log file created in your user directory.`
+  },
+  'tasker-geo': {
+    prompt: `Design a Tasker XML block outline that automatically detects connection to SSID "Home_Secure_Net", changes the audio profile to "All Sounds Muted", turns off Bluetooth, and restores state when disconnecting.`,
+    code: `<TaskerData sr="tasker_profile_home">
+  <Profile sr="prof_1" ve="2">
+    <cdate>162389408221</cdate>
+    <edate>162389408221</edate>
+    <id>1</id>
+    <mid>home_ssid_state</mid>
+    <name>Wi-Fi SSID Connect Home</name>
+    <State sr="con_1" ve="2">
+      <code>160</code> <!-- Wifi Connected State -->
+      <Str sr="arg0" ve="3">Home_Secure_Net</Str>
+    </State>
+  </Profile>
+  
+  <Task sr="task_enter_home">
+    <id>10</id>
+    <Action sr="act_mute">
+      <code>307</code> <!-- Mute Ringtone -->
+      <Int sr="arg0" val="0"/>
+    </Action>
+    <Action sr="act_bt_off">
+      <code>294</code> <!-- Bluetooth Switch -->
+      <Int sr="arg0" val="0"/> <!-- Turn Off -->
+    </Action>
+  </Task>
+  
+  <Task sr="task_exit_home">
+    <id>20</id>
+    <Action sr="act_unmute">
+      <code>307</code> <!-- Restore Ringtone -->
+      <Int sr="arg0" val="7"/>
+    </Action>
+    <Action sr="act_bt_on">
+      <code>294</code> <!-- Bluetooth Restore -->
+      <Int sr="arg0" val="1"/>
+    </Action>
+  </Task>
+</TaskerData>`,
+    analysis: `Type: Android Tasker Automation Profile
+Format: Tasker XML Markup (.xml)
+Complexity: High (4/5)
+Execution Instructions:
+1. Copy script code and save as 'HomeWifiState.prj.xml'.
+2. Move file to your mobile storage.
+3. Open Tasker, press and hold the 'Profiles' tab, select 'Import Profile'.
+4. Locate the saved XML file and run permission triggers.`
+  },
+  'prompt-refactor': {
+    prompt: `Write a robust system prompt for an LLM that makes it behave like a strict Senior Tech Lead. It must audit the code for readability, type safety, write comprehensive unit tests, and never output explanations unless requested.`,
+    code: `You are an expert Senior Software Engineer and Tech Lead. Your task is to review code submitted by junior developers. Follow these strict rules:
+
+1. **Review Standards**:
+   - Verify readability, naming conventions, and code comments.
+   - Audit variable names for clarity and structural cleanliness.
+   - Enforce static typing and type safety where appropriate.
+   
+2. **Output Format**:
+   - Provide the refactored, optimized version inside a single fenced code block.
+   - Prefix the code block with a markdown table summarizing improvements: [File Path, Class/Method, Issue, Action Taken].
+   - Provide NO conversational text, apologies, warnings, or explanations outside this format.
+
+3. **Testing Requirement**:
+   - Automatically write comprehensive unit tests matching the selected code logic (e.g. using Jest, pytest, or JUnit) in a secondary code block.`,
+    analysis: `Type: Large Language Model Prompt Template
+Language: Natural Language Markdown (.md)
+Complexity: Low (2/5)
+Execution Instructions:
+1. Copy template and paste it inside the system instructions text box of Google AI Studio or OpenAI Playground.
+2. Submit code files directly and trigger generation.`
+  }
+};
+
+function initAIPlayground() {
+  const promptInput = document.getElementById('playground-prompt-input');
+  const btnSynth = document.getElementById('playground-btn-synth');
+  const logConsole = document.getElementById('playground-log-console');
+  const outputCode = document.getElementById('playground-output-code');
+  const progressBar = document.getElementById('playground-synth-progress');
+  const progressFill = document.getElementById('playground-synth-fill');
+  const btnCopy = document.getElementById('playground-btn-copy');
+  const btnDownload = document.getElementById('playground-btn-download');
+
+  const tabCode = document.getElementById('btn-tab-code');
+  const tabLog = document.getElementById('btn-tab-log');
+
+  if (!promptInput || !btnSynth || !logConsole || !outputCode) return;
+
+  let activeTemplateKey = 'ahk-dnd';
+  let activeTab = 'code';
+
+  // Set default prompt value
+  promptInput.value = playgroundTemplates[activeTemplateKey].prompt;
+  outputCode.innerHTML = `<code>&gt; Ready to synthesize ${activeTemplateKey.toUpperCase()} script... Click Compile above.</code>`;
+
+  // Handle template card clicks
+  const cards = document.querySelectorAll('.template-card');
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      cards.forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+      activeTemplateKey = card.getAttribute('data-template');
+      promptInput.value = playgroundTemplates[activeTemplateKey].prompt;
+      logConsole.innerHTML = `&gt; Loaded template blueprint: <strong>${activeTemplateKey.toUpperCase()}</strong>.<br>&gt; Ready for parameter compilation.`;
+      
+      outputCode.innerHTML = `<code>&gt; Ready to synthesize ${activeTemplateKey.toUpperCase()} script... Click Compile above.</code>`;
+      synth.playClick();
+    });
+  });
+
+  // Switch tabs
+  if (tabCode && tabLog) {
+    tabCode.addEventListener('click', () => {
+      tabCode.classList.add('active');
+      tabLog.classList.remove('active');
+      activeTab = 'code';
+      synth.playClick();
+      updateOutputDisplay();
+    });
+
+    tabLog.addEventListener('click', () => {
+      tabLog.classList.add('active');
+      tabCode.classList.remove('active');
+      activeTab = 'log';
+      synth.playClick();
+      updateOutputDisplay();
+    });
+  }
+
+  function updateOutputDisplay() {
+    const data = playgroundTemplates[activeTemplateKey];
+    if (!data) return;
+
+    if (activeTab === 'code') {
+      outputCode.innerHTML = `<code>${escapeHtml(data.code)}</code>`;
+    } else {
+      outputCode.innerHTML = `<code>${escapeHtml(data.analysis)}</code>`;
+    }
+  }
+
+  function escapeHtml(str) {
+    return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+  }
+
+  // Synthesize Code logic
+  btnSynth.addEventListener('click', () => {
+    synth.playTone(400, 0.1, 'square', 0.05);
+    btnSynth.disabled = true;
+    progressBar.style.display = 'block';
+    progressFill.style.width = '0%';
+    logConsole.innerHTML = `&gt; INITIALIZING AI COMPILER CONSOLE...`;
+
+    const logs = [
+      { t: 0, text: "&gt; Connecting to local Ollama API endpoint (localhost:11434)..." },
+      { t: 800, text: "&gt; API Connection: HTTP 200 OK. Allocating VRAM..." },
+      { t: 1500, text: `&gt; Model Loaded: DeepSeek R1 (8B Inference Nodes).` },
+      { t: 2200, text: "&gt; Parsing custom context and parameters..." },
+      { t: 3000, text: "&gt; Running neural reasoning inference (temperature=0.6)..." },
+      { t: 3800, text: "&gt; Reasoning complete! Stream output tokens loaded." },
+      { t: 4500, text: "&gt; Compiling output script syntax rules... SUCCESS." }
+    ];
+
+    logs.forEach(log => {
+      setTimeout(() => {
+        logConsole.innerHTML += `<br>${log.text}`;
+        logConsole.scrollTop = logConsole.scrollHeight;
+        synth.playTone(700 + Math.random() * 200, 0.02, 'sine', 0.03);
+      }, log.t);
+    });
+
+    let progress = 0;
+    const progressInterval = setInterval(() => {
+      progress += 2;
+      progressFill.style.width = `${progress}%`;
+      if (progress >= 100) {
+        clearInterval(progressInterval);
+      }
+    }, 90);
+
+    setTimeout(() => {
+      clearInterval(progressInterval);
+      progressFill.style.width = '100%';
+      
+      const targetData = playgroundTemplates[activeTemplateKey];
+      const codeText = targetData.code;
+      outputCode.innerHTML = '';
+      
+      const pre = document.createElement('code');
+      outputCode.appendChild(pre);
+
+      let charIdx = 0;
+      synth.playTone(880, 0.2, 'sine', 0.05);
+
+      function typeCode() {
+        if (charIdx < codeText.length) {
+          pre.textContent += codeText.charAt(charIdx);
+          charIdx += 4;
+          outputCode.scrollTop = outputCode.scrollHeight;
+          if (charIdx % 24 === 0) {
+            synth.playTone(1000 + Math.random() * 500, 0.015, 'triangle', 0.01);
+          }
+          setTimeout(typeCode, 2);
+        } else {
+          pre.textContent = codeText;
+          btnSynth.disabled = false;
+          progressBar.style.display = 'none';
+          logConsole.innerHTML += `<br>&gt; COMPILATION PROCESS COMPLETE.`;
+          logConsole.scrollTop = logConsole.scrollHeight;
+          synth.playTone(1174.66, 0.25, 'sine', 0.06);
+        }
+      }
+      typeCode();
+
+    }, 4600);
+  });
+
+  // Copy output button
+  if (btnCopy) {
+    btnCopy.addEventListener('click', () => {
+      const data = playgroundTemplates[activeTemplateKey];
+      const txt = activeTab === 'code' ? data.code : data.analysis;
+      navigator.clipboard.writeText(txt).then(() => {
+        const originalText = btnCopy.innerHTML;
+        btnCopy.innerHTML = `<i class="fa-solid fa-check"></i> Copied!`;
+        synth.playTone(1000, 0.1, 'sine', 0.08);
+        setTimeout(() => {
+          btnCopy.innerHTML = originalText;
+        }, 1500);
+      });
+    });
+  }
+
+  // Download script button
+  if (btnDownload) {
+    btnDownload.addEventListener('click', () => {
+      const data = playgroundTemplates[activeTemplateKey];
+      const txt = data.code;
+      
+      let ext = "txt";
+      if (activeTemplateKey === 'ahk-dnd') ext = "ahk";
+      else if (activeTemplateKey === 'py-scraper') ext = "py";
+      else if (activeTemplateKey === 'tasker-geo') ext = "xml";
+      else if (activeTemplateKey === 'prompt-refactor') ext = "md";
+
+      const filename = `compiled_automation.${ext}`;
+      const blob = new Blob([txt], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      
+      synth.playTone(1200, 0.15, 'sine', 0.08);
+    });
+  }
+}
+
